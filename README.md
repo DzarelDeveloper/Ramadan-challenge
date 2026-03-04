@@ -25,6 +25,8 @@ Website ini dikembangkan secara bertahap melalui beberapa misi, dimulai dari str
 * Styling modern menggunakan CSS
 * Layout responsif untuk desktop dan mobile
 
+🔗 **Live Demo:** [Misi 1 - Halaman Doa Ramadhan](https://dzareldeveloper.github.io/Ramadan-challenge/Misi-1/)
+
 ### Misi 2 — Aplikasi Hitung Zikir
 
 * Fitur penghitung (counter) dzikir interaktif
@@ -33,6 +35,8 @@ Website ini dikembangkan secara bertahap melalui beberapa misi, dimulai dari str
 * Modal konfirmasi untuk mereset hitungan
 * Notifikasi capaian target dzikir harian
 * Implementasi DOM Manipulation dengan JavaScript
+
+🔗 **Live Demo:** [Misi 2 - Aplikasi Hitung Zikir](https://dzareldeveloper.github.io/Ramadan-challenge/Misi-2/)
 
 (Misi selanjutnya akan ditambahkan secara bertahap)
 
