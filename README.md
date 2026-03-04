@@ -25,6 +25,15 @@ Website ini dikembangkan secara bertahap melalui beberapa misi, dimulai dari str
 * Styling modern menggunakan CSS
 * Layout responsif untuk desktop dan mobile
 
+### Misi 2 — Aplikasi Hitung Zikir
+
+* Fitur penghitung (counter) dzikir interaktif
+* Pilihan berbagai jenis dzikir lengkap dengan teks Arab dan Latin
+* Progress bar dan target pencapaian dzikir
+* Modal konfirmasi untuk mereset hitungan
+* Notifikasi capaian target dzikir harian
+* Implementasi DOM Manipulation dengan JavaScript
+
 (Misi selanjutnya akan ditambahkan secara bertahap)
 
 ---
@@ -33,6 +42,7 @@ Website ini dikembangkan secara bertahap melalui beberapa misi, dimulai dari str
 
 * HTML5
 * CSS3
+* JavaScript
 * GitHub
 * Visual Studio Code
 
@@ -40,13 +50,20 @@ Website ini dikembangkan secara bertahap melalui beberapa misi, dimulai dari str
 
 ## 📂 Struktur Folder
 
-```
+```text
 Ramadan-challenge/
 │
 ├── Misi-1/
 │   ├── index.html
-├── ├──css/
-│   └── style.css
+│   └── css/
+│       └── style.css
+│
+├── Misi-2/
+│   ├── index.html
+│   ├── css/
+│   │   └── style.css
+│   └── js/
+│       └── script.js
 │
 └── README.md
 ```
