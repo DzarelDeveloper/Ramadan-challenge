@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hitung Zikir - Ramadhan</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Hitung Zikir</h1>
+        <p>Tingkatkan amalan dengan dzikir harian Anda</p>
+    </header>
+
+    <main>
+        <section class="counter-container">
+            <h2 class="section-title">Hitung Zikir Anda Hari ini</h2>
+
+            <div class="dzikir-selector">
+                <label for="dzikir-type">Pilih Dzikir:</label>
+                <select id="dzikir-type">
+                    <option value="subhanallah" data-target="33" data-arabic="سُبْحَانَ اللَّهِ"
+                        data-latin="Subhanallah">Subhanallah (33x)</option>
+                    <option value="alhamdulillah" data-target="33" data-arabic="الْحَمْدُ لِلَّهِ"
+                        data-latin="Alhamdulillah">Alhamdulillah (33x)</option>
+                    <option value="allahuakbar" data-target="34" data-arabic="اللَّهُ أَكْبَرُ"
+                        data-latin="Allahu Akbar">Allahu Akbar (34x)</option>
+                    <option value="istighfar" data-target="100" data-arabic="أَسْتَغْفِرُ اللَّهَ"
+                        data-latin="Astaghfirullah">Istighfar (100x)</option>
+                    <option value="tahlil" data-target="100" data-arabic="لَا إِلَهَ إِلَّا اللَّهُ"
+                        data-latin="La Ilaha Illallah">Tahlil (100x)</option>
+                    <option value="custom" data-target="100" data-arabic="" data-latin="Dzikir Bebas">Bebas / Custom
+                    </option>
+                </select>
+            </div>
+
+            <div class="dzikir-text" id="dzikir-text-container">
+                <p class="arabic" id="dzikir-arabic">سُبْحَانَ اللَّهِ</p>
+                <p class="latin" id="dzikir-latin">Subhanallah</p>
+            </div>
+
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+
+            <div class="target-display">
+                Target: <span id="target-count">33</span>
+            </div>
+
+            <div class="count-display" id="count-display-container">
+                <span id="current-count">0</span>
+            </div>
+
+            <div id="notification-area" class="notification hidden">
+                Alhamdulillah, target tercapai! ✨
+            </div>
+
+            <div class="button-group">
+                <button id="add-btn" class="btn btn-add">
+                    <span class="btn-icon">+</span>
+                    <span class="btn-text">Tambah</span>
+                </button>
+                <button id="reset-btn" class="btn btn-reset">Reset</button>
+            </div>
+
+            <div class="stats-area">
+                <p>Total Dzikir Hari Ini: <strong id="total-daily-count">0</strong></p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Custom Modal -->
+    <div id="reset-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <h3>Reset Hitungan?</h3>
+            <p>Apakah Anda yakin ingin mengulang dari awal?</p>
+            <div class="modal-actions">
+                <button id="cancel-reset-btn" class="btn btn-secondary">Batal</button>
+                <button id="confirm-reset-btn" class="btn btn-danger">Hapus</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Selamat menunaikan ibadah puasa Ramadhan</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
