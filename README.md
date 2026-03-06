@@ -38,6 +38,18 @@ Website ini dikembangkan secara bertahap melalui beberapa misi, dimulai dari str
 
 🔗 **Live Demo:** [Misi 2 - Aplikasi Hitung Zikir](https://dzareldeveloper.github.io/Ramadan-challenge/Misi-2/)
 
+### Misi 3 — Kalkulator Zakat
+
+* Pilihan antarmuka 4 jenis zakat (Penghasilan, Perusahaan, Perdagangan, dan Emas)
+* Form input dinamis berdasarkan kategori zakat
+* Perhitungan batas nisab otomatis (berdasarkan referensi 85 gram emas)
+* Kalkulasi total harta bersih (dikurangi hutang jika ada) dan kewajiban zakat (2.5%) secara otomatis
+* Penentuan status wajib zakat secara dinamis
+* Antarmuka profesional dengan UX state informatif saat data kosong
+* Responsif dan ramah pengguna di semua ukuran perangkat
+
+🔗 **Live Demo:** [Misi 3 - Kalkulator Zakat](https://dzareldeveloper.github.io/Ramadan-challenge/Misi-3/)
+
 (Misi selanjutnya akan ditambahkan secara bertahap)
 
 ---
@@ -63,6 +75,13 @@ Ramadan-challenge/
 │       └── style.css
 │
 ├── Misi-2/
+│   ├── index.html
+│   ├── css/
+│   │   └── style.css
+│   └── js/
+│       └── script.js
+│
+├── Misi-3/
 │   ├── index.html
 │   ├── css/
 │   │   └── style.css
