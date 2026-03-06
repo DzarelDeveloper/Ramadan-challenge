@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Zakat - Ramadhan</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Kalkulator Zakat</h1>
+        <p>Hitung kewajiban zakat secara profesional, mudah, dan akurat</p>
+    </header>
+
+    <main>
+        <div class="calculator-layout">
+            <section class="calculator-form-container">
+                <h2 class="section-title">Informasi Finansial</h2>
+
+                <div class="form-group">
+                    <label for="zakat-type">Kategori Zakat:</label>
+                    <select id="zakat-type">
+                        <option value="penghasilan">Zakat Penghasilan</option>
+                        <option value="perusahaan">Zakat Perusahaan</option>
+                        <option value="perdagangan">Zakat Perdagangan</option>
+                        <option value="emas">Zakat Emas</option>
+                    </select>
+                </div>
+
+                <div id="dynamic-form">
+                    <div id="form-penghasilan" class="form-section">
+                        <div class="form-group row-input">
+                            <label for="gaji">Gaji saya per bulan</label>
+                            <div class="input-with-prefix">
+                                <span class="prefix">Rp.</span>
+                                <input type="number" id="gaji" placeholder="0" min="0">
+                            </div>
+                        </div>
+
+                        <div class="form-group row-input">
+                            <label for="penghasilan-lain">Penghasilan lain-lain per bulan</label>
+                            <div class="input-with-prefix">
+                                <span class="prefix">Rp.</span>
+                                <input type="number" id="penghasilan-lain" placeholder="0" min="0">
+                            </div>
+                        </div>
+
+                        <div class="form-group row-input">
+                            <label for="jumlah-penghasilan">Jumlah penghasilan per bulan</label>
+                            <div class="input-with-prefix readonly-input">
+                                <span class="prefix">Rp.</span>
+                                <input type="text" id="jumlah-penghasilan" value="0" readonly>
+                            </div>
+                        </div>
+
+                        <div class="form-group row-input mt-3">
+                            <label for="nisab-tahun">Nisab per tahun</label>
+                            <div class="input-with-prefix readonly-input">
+                                <span class="prefix">Rp.</span>
+                                <input type="text" id="nisab-tahun" value="91.681.728" readonly>
+                            </div>
+                            <small class="helper-text-red">Sesuai SK Ketua BAZNAS No. 15 tahun 2026</small>
+                        </div>
+
+                        <div class="form-group row-input">
+                            <label for="nisab-bulan">Nisab per bulan</label>
+                            <div class="input-with-prefix readonly-input">
+                                <span class="prefix">Rp.</span>
+                                <input type="text" id="nisab-bulan" value="7.640.114" readonly>
+                            </div>
+                            <small class="helper-text-red">Sesuai SK Ketua BAZNAS No. 15 tahun 2026</small>
+                        </div>
+                    </div>
+
+                    <div id="form-perusahaan" class="form-section hidden">
+                        <div class="baznas-tabs">
+                            <button class="baznas-tab active" data-tab="tab-jasa">Jasa</button>
+                            <button class="baznas-tab" data-tab="tab-dagang">Dagang/Industri</button>
+                        </div>
+
+                        <div id="tab-jasa" class="tab-content active">
+                            <div class="form-group row-input mt-3">
+                                <label for="pendapatan-jasa">Pendapatan sebelum pajak</label>
+                                <div class="input-with-prefix">
+                                    <span class="prefix">Rp.</span>
+                                    <input type="number" id="pendapatan-jasa" placeholder="0" min="0">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="tab-dagang" class="tab-content hidden">
+                            <div class="form-group row-input mt-3">
+                                <label for="aktiva-lancar">Aktiva Lancar</label>
+                                <div class="input-with-prefix">
+                                    <span class="prefix">Rp.</span>
+                                    <input type="number" id="aktiva-lancar" placeholder="0" min="0">
+                                </div>
+                            </div>
+
+                            <div class="form-group row-input">
+                                <label for="pasiva-lancar">Pasiva Lancar</label>
+                                <div class="input-with-prefix">
+                                    <span class="prefix">Rp.</span>
+                                    <input type="number" id="pasiva-lancar" placeholder="0" min="0">
+                                </div>
+                            </div>
+
+                            <div class="form-group row-input">
+                                <label for="jumlah-perusahaan">Jumlah</label>
+                                <div class="input-with-prefix readonly-input">
+                                    <span class="prefix">Rp.</span>
+                                    <input type="text" id="jumlah-perusahaan" value="0" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="form-perdagangan" class="form-section hidden">
+                        <div class="form-group row-input mt-3">
+                            <label for="aset-lancar-perdagangan">Aset Lancar</label>
+                            <div class="input-with-prefix">
+                                <span class="prefix">Rp.</span>
+                                <input type="number" id="aset-lancar-perdagangan" placeholder="0" min="0">
+                            </div>
+                        </div>
+
+                        <div class="form-group row-input">
+                            <label for="laba-perdagangan">Laba</label>
+                            <div class="input-with-prefix">
+                                <span class="prefix">Rp.</span>
+                                <input type="number" id="laba-perdagangan" placeholder="0" min="0">
+                            </div>
+                        </div>
+
+                        <div class="form-group row-input">
+                            <label for="jumlah-perdagangan">Jumlah</label>
+                            <div class="input-with-prefix readonly-input">
+                                <span class="prefix">Rp.</span>
+                                <input type="text" id="jumlah-perdagangan" value="0" readonly>
+                            </div>
+                        </div>
+
+                        <div class="form-group row-input mt-3">
+                            <label for="nisab-tahun-perdagangan">Nisab per tahun</label>
+                            <div class="input-with-prefix readonly-input">
+                                <span class="prefix">Rp.</span>
+                                <input type="text" id="nisab-tahun-perdagangan" value="91.681.728" readonly>
+                            </div>
+                            <small class="helper-text-red">Sesuai SK Ketua BAZNAS No. 15 tahun 2026</small>
+                        </div>
+                    </div>
+
+                    <div id="form-emas" class="form-section hidden">
+                        <div class="form-group row-input mt-3">
+                            <label for="emas-rupiah">Emas</label>
+                            <div class="input-with-prefix">
+                                <span class="prefix">Rp.</span>
+                                <input type="number" id="emas-rupiah" placeholder="0" min="0">
+                            </div>
+                        </div>
+
+                        <div class="form-group row-input mt-3">
+                            <label for="nisab-tahun-emas">Nisab per tahun</label>
+                            <div class="input-with-prefix readonly-input">
+                                <span class="prefix">Rp.</span>
+                                <input type="text" id="nisab-tahun-emas" value="91.681.728" readonly>
+                            </div>
+                            <small class="helper-text-red">Sesuai SK Ketua BAZNAS No. 15 tahun 2026</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group input-emas-block hidden" id="dynamic-harga-emas">
+                    <label for="harga-emas">Harga Emas Saat Ini per Gram (Rp):</label>
+                    <input type="number" id="harga-emas" placeholder="Contoh: 1300000" min="0">
+                    <small class="helper-text helper-emas">Digunakan sebagai standar penentuan batas nisab (85 gram
+                        emas).</small>
+                </div>
+
+                <div class="baznas-buttons">
+                    <button id="reset-btn" class="btn baznas-btn-reset">Reset</button>
+                    <button id="calculate-btn" class="btn baznas-btn-hitung">Hitung Zakat</button>
+                </div>
+
+                <div id="inline-result-message" class="inline-message hidden">
+                    <p id="inline-text">Penghasilan Anda belum mencapai Nisab, <strong>KLIK</strong> untuk sedekah</p>
+                    <button id="sedekah-btn" class="btn baznas-btn-sedekah">Sedekah</button>
+                </div>
+            </section>
+
+            <section class="calculator-result-container">
+                <h2 class="section-title">Hasil Perhitungan</h2>
+
+                <div id="empty-state" class="empty-state">
+                    <h3>Panel Kalkulasi Zakat</h3>
+                    <p class="empty-desc">Silakan lengkapi informasi finansial Anda pada formulir di sebelah kiri.
+                        Sistem kami akan secara otomatis mengkalkulasi batas nisab dan jumlah kewajiban zakat Anda
+                        berdasarkan ketentuan syariat Islam (2,5%).</p>
+
+                    <div class="info-boxes">
+                        <div class="info-box">
+                            <strong>Nisab Zakat</strong>
+                            <span>Setara 85 gram emas murni.</span>
+                        </div>
+                        <div class="info-box">
+                            <strong>Tarif Zakat</strong>
+                            <span>Ditetapkan sebesar 2,5% dari total harta.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="result-box" class="result-box hidden">
+                    <div class="result-header">
+                        <h3>Ringkasan Kalkulasi</h3>
+                        <p>Berdasarkan data finansial yang telah Anda masukkan.</p>
+                    </div>
+
+                    <div class="result-item">
+                        <span class="result-label" id="label-total">Total Nilai Harta:</span>
+                        <span class="result-value" id="res-total">Rp 0</span>
+                    </div>
+
+                    <div class="result-item">
+                        <span class="result-label" id="label-nisab">Nilai Standar Nisab:</span>
+                        <span class="result-value" id="res-nisab">Rp 0</span>
+                    </div>
+
+                    <div class="result-item result-status" id="status-container">
+                        <span class="result-label">Status Kewajiban Zakat:</span>
+                        <span class="result-value status-badge" id="res-status">Tidak Wajib</span>
+                    </div>
+
+                    <div class="result-item zakat-amount hidden" id="zakat-amount-container">
+                        <span class="result-label" id="label-zakat-amount">Jumlah Zakat yang Harus Ditunaikan per
+                            Bulan:</span>
+                        <span class="result-value highlight" id="res-zakat">Rp 0</span>
+                        <small class="zakat-note">*(2,5% dari Penghasilan)</small>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>Semoga harta Anda diberkahi dan ibadah zakat Anda diterima oleh Allah SWT.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
