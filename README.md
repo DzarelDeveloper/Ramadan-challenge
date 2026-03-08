@@ -50,6 +50,26 @@ Website ini dikembangkan secara bertahap melalui beberapa misi, dimulai dari str
 
 🔗 **Live Demo:** [Misi 3 - Kalkulator Zakat](https://dzareldeveloper.github.io/Ramadan-challenge/Misi-3/)
 
+### Misi 4 — Ramadhan To-Do List
+
+* SPA satu halaman yang berfokus pada navigasi tab (Shalat, Quran, Puasa, Dzikir)
+* **Pintasan Progres Harian**: Circle progress global dengan status motivasi dinamis
+* **Checklist Shalat Wajib**:
+    * Integrasi API waktu shalat & Geolocation otomatis (mendeteksi lokasi pengguna)
+    * **Validasi Waktu**: Mencegah checklist sebelum masuk waktu shalat (Real-time Clock validation)
+    * Penanda otomatis jika shalat dikerjakan "Terlewat" (berdasarkan batas waktu shalat berikutnya)
+* **Target Tilawah Quran**:
+    * Sistem kunci target (diubah setiap 3 hari) untuk menjaga konsistensi
+    * Input manual halaman dibaca atau sekali klik "Target Selesai"
+* **Jurnal Puasa Ramadhan**:
+    * Kalender 30 hari interaktif dengan penentuan hari puasa secara real-time
+    * Fitur "Halangan/Sakit" khusus (dengan penanda qadha/hutang puasa)
+    * Pesan penyemangat & edukasi ibadah harian
+* **Penyimpanan Lokal**: Semua progres disimpan aman di browser (`localStorage`)
+* **Antarmuka Premium**: Desain modern bertema hijau (#03522f) dan emas dengan animasi halus
+
+🔗 **Live Demo:** [Misi 4 - Ramadhan To-Do List](https://dzareldeveloper.github.io/Ramadan-challenge/Misi-4/)
+
 (Misi selanjutnya akan ditambahkan secara bertahap)
 
 ---
@@ -82,6 +102,13 @@ Ramadan-challenge/
 │       └── script.js
 │
 ├── Misi-3/
+│   ├── index.html
+│   ├── css/
+│   │   └── style.css
+│   └── js/
+│       └── script.js
+│
+├── Misi-4/
 │   ├── index.html
 │   ├── css/
 │   │   └── style.css

@@ -1,0 +1,962 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+    background-color: #fbf8f1;
+    color: #333333;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background-color: #03522f;
+    color: #f4f1de;
+    text-align: center;
+    padding: 3rem 1.5rem;
+    border-bottom: 6px solid #ffb300;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 800;
+}
+
+header p {
+    font-size: 1.1rem;
+    opacity: 0.95;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    padding: 2rem 1.5rem;
+}
+
+.app-container {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Global Progress Card */
+.global-progress-card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 1.5rem 2rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid #eaeaea;
+}
+
+.progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #f3f4f6;
+    padding-bottom: 0.5rem;
+}
+
+.progress-header h2 {
+    color: #1b4332;
+    font-size: 1.3rem;
+}
+
+.date-badge {
+    background-color: #ffb300;
+    color: #333;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.progress-body {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.progress-circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: conic-gradient(#03522f 0%, #e2e8f0 0%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.progress-circle::after {
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background-color: #ffffff;
+    border-radius: 50%;
+}
+
+.progress-circle span {
+    position: relative;
+    z-index: 1;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #03522f;
+}
+
+.progress-info h3 {
+    color: #03522f;
+    font-size: 1.4rem;
+    margin-bottom: 0.3rem;
+}
+
+.progress-info p {
+    color: #64748b;
+    font-size: 1rem;
+}
+
+/* Tabs Navigation */
+.tabs-nav {
+    display: flex;
+    background-color: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.tab-btn {
+    flex: 1;
+    background: none;
+    border: none;
+    padding: 1rem 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #64748b;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-bottom: 3px solid transparent;
+}
+
+.tab-btn:hover {
+    background-color: #f8fafc;
+    color: #03522f;
+}
+
+.tab-btn.active {
+    color: #03522f;
+    border-bottom-color: #ffb300;
+    background-color: #f0fdf4;
+}
+
+/* Tab Content */
+.tab-content-container {
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid #eaeaea;
+    min-height: 400px;
+}
+
+.tab-content {
+    display: none;
+    animation: fadeIn 0.4s ease;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.section-title {
+    font-size: 1.5rem;
+    color: #1b4332;
+    border-bottom: 2px solid #ffb300;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Checkboxes */
+.checklist-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.check-item {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-left: 45px;
+    /* Increased from 35px to fix overlapping text */
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 500;
+    user-select: none;
+    color: #333;
+    background-color: #f8fafc;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    transition: all 0.2s;
+}
+
+.check-item:hover {
+    background-color: #f1f5f9;
+}
+
+.check-item input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    height: 22px;
+    width: 22px;
+    background-color: #fff;
+    border: 2px solid #cbd5e1;
+    border-radius: 4px;
+}
+
+.check-item input:checked~.checkmark {
+    background-color: #03522f;
+    border-color: #03522f;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.check-item input:checked~.checkmark:after {
+    display: block;
+}
+
+/* Shalat Header & Digital Clock */
+.shalat-header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.shalat-clock-badge {
+    background-color: #03522f;
+    color: #ffb300;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+#digital-clock {
+    font-size: 1.4rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    line-height: 1.2;
+}
+
+#location-text {
+    font-size: 0.75rem;
+    color: #e2e8f0;
+    opacity: 0.9;
+}
+
+/* Disabled State */
+.check-item input:disabled {
+    cursor: not-allowed;
+}
+
+.check-item input:disabled~.checkmark {
+    opacity: 0.8;
+    cursor: not-allowed;
+}
+
+.check-item:has(input:disabled) {
+    cursor: not-allowed;
+    opacity: 0.85;
+}
+
+/* Shalat Schedule Time */
+.shalat-time {
+    margin-left: auto;
+    /* Push to right */
+    font-size: 0.9rem;
+    color: #64748b;
+    font-variant-numeric: tabular-nums;
+    background-color: #f1f5f9;
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+/* Late / Qadha styling */
+.check-item.late-check {
+    background-color: #fffbeb;
+    border-color: #fcd34d;
+}
+
+.check-item.late-check input:checked~.checkmark {
+    background-color: #d97706;
+    border-color: #d97706;
+}
+
+.late-badge {
+    margin-left: 10px;
+    font-size: 0.75rem;
+    color: #d97706;
+    background-color: #fef3c7;
+    padding: 2px 6px;
+    border-radius: 4px;
+    border: 1px solid #fcd34d;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.check-item .checkmark:after {
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.check-item.large-check {
+    background-color: #f0fdf4;
+    border-color: #bbf7d0;
+}
+
+/* Form items */
+.form-group {
+    margin-bottom: 1.2rem;
+}
+
+.row-input label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #4b5563;
+}
+
+.row-input input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 1.05rem;
+    transition: border-color 0.2s;
+}
+
+.row-input input:focus {
+    outline: none;
+    border-color: #03522f;
+    box-shadow: 0 0 0 3px rgba(3, 82, 47, 0.1);
+}
+
+.row-input input:disabled {
+    background-color: #f1f5f9;
+    color: #94a3b8;
+    cursor: not-allowed;
+    border-color: #e2e8f0;
+}
+
+.quran-quick-action {
+    margin-top: 1rem;
+}
+
+/* Feature Status & Progress Bars */
+.feature-status {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    background-color: #f8fafc;
+    padding: 1.2rem;
+    border-radius: 8px;
+    border-left: 4px solid #03522f;
+}
+
+.progress-bar-container {
+    width: 100%;
+    height: 12px;
+    background-color: #e2e8f0;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 0.8rem;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background-color: #03522f;
+    border-radius: 6px;
+    transition: width 0.4s ease;
+}
+
+.status-text {
+    font-weight: 700;
+    color: #1e293b;
+    font-size: 0.95rem;
+}
+
+.mt-3 {
+    margin-top: 1.5rem;
+}
+
+/* Button */
+.btn {
+    width: 100%;
+    padding: 1rem;
+    background-color: #03522f;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    text-align: center;
+}
+
+.btn:hover {
+    background-color: #024024;
+}
+
+.btn-save {
+    background-color: #ffb300;
+    color: #1e293b;
+}
+
+.btn-save:hover {
+    background-color: #f5a600;
+}
+
+/* Calendar */
+.puasa-today-card {
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+}
+
+.puasa-today-card h3 {
+    color: #03522f;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.subsection-title {
+    font-size: 1.2rem;
+    color: #4b5563;
+    margin-bottom: 1rem;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.calendar-day {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-weight: 600;
+    color: #64748b;
+    font-size: 1.1rem;
+    transition: all 0.2s;
+    user-select: none;
+    cursor: pointer;
+}
+
+.calendar-day.checked,
+.calendar-day.puasa {
+    background-color: #03522f;
+    color: #ffb300;
+    border-color: #03522f;
+}
+
+.calendar-day.halangan {
+    background-color: #ffb300;
+    color: #03522f;
+    border-color: #ffb300;
+}
+
+.calendar-day.tidak-puasa {
+    background-color: #ef4444;
+    color: white;
+    border-color: #ef4444;
+}
+
+.calendar-day.future {
+    background-color: #f1f5f9;
+    color: #cbd5e1;
+    cursor: not-allowed;
+    border: 1px dashed #e2e8f0;
+}
+
+.calendar-day.future:hover {
+    background-color: #f1f5f9;
+    transform: none;
+    box-shadow: none;
+}
+
+.calendar-day.checked::after {
+    content: "✓";
+    font-size: 1.2rem;
+}
+
+.calendar-day.checked span {
+    display: none;
+}
+
+/* Dzikir */
+
+.dzikir-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    text-align: center;
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
+}
+
+.dzikir-title {
+    font-size: 1.8rem;
+    color: #03522f;
+    border-bottom: 2px solid #ffb300;
+    padding-bottom: 0.5rem;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    margin-bottom: -0.5rem;
+}
+
+.dzikir-selector {
+    width: 100%;
+    margin-bottom: 0.5rem;
+    text-align: left;
+}
+
+.dzikir-selector label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #1b4332;
+}
+
+.dzikir-selector select {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1.05rem;
+    background-color: #fbf8f1;
+    color: #333;
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%2303522f%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat, repeat;
+    background-position: right .7em top 50%, 0 0;
+    background-size: .65em auto, 100%;
+}
+
+.dzikir-selector select:focus {
+    border-color: #03522f;
+    box-shadow: 0 0 0 3px rgba(3, 82, 47, 0.2);
+}
+
+.dzikir-text {
+    width: 100%;
+    background-color: #fbf8f1;
+    padding: 1.5rem 1rem;
+    border-radius: 8px;
+    border: 1px dashed #ffb300;
+    transition: all 0.3s ease;
+}
+
+.dzikir-text.hidden {
+    display: none;
+}
+
+.dzikir-text .arabic {
+    font-size: 2.5rem;
+    color: #111111;
+    margin-bottom: 0.5rem;
+    font-family: serif;
+    line-height: 1.5;
+}
+
+.dzikir-text .latin {
+    font-size: 1.1rem;
+    color: #555555;
+    font-style: italic;
+}
+
+.dzikir-progress-bar {
+    height: 100%;
+    background-color: #ffb300;
+    width: 0%;
+    transition: width 0.3s ease, background-color 0.3s ease;
+    border-radius: 6px;
+}
+
+.dzikir-progress-bar.complete {
+    background-color: #03522f;
+}
+
+.target-display {
+    font-size: 1.2rem;
+    color: #444444;
+    background-color: #fbf8f1;
+    padding: 0.5rem 1.5rem;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.count-display {
+    font-size: 6rem;
+    font-weight: 700;
+    color: #111111;
+    line-height: 1;
+    transition: transform 0.1s ease-out;
+    margin: 1rem 0;
+}
+
+.count-display.pop {
+    transform: scale(1.1);
+}
+
+.notification {
+    background-color: #03522f;
+    color: #ffb300;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: bold;
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+    width: 100%;
+}
+
+.notification.hidden {
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+}
+
+.button-group {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+    justify-content: center;
+}
+
+.btn-add {
+    background-color: #ffb300;
+    color: #1b4332;
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 0 #d4a742;
+    padding: 1rem;
+}
+
+.btn-add:active {
+    box-shadow: 0 1px 0 #d4a742;
+    transform: translateY(3px) scale(0.98);
+}
+
+.btn-add:hover {
+    background-color: #f5a600;
+}
+
+.btn-icon {
+    font-size: 2.5rem;
+    line-height: 1;
+}
+
+.btn-text {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 0.2rem;
+}
+
+.btn-reset {
+    background-color: #e8e8e8;
+    color: #555555;
+    flex: 1;
+    box-shadow: 0 4px 0 #d0d0d0;
+    padding: 1rem;
+}
+
+.btn-reset:active {
+    box-shadow: 0 1px 0 #d0d0d0;
+    transform: translateY(3px) scale(0.98);
+}
+
+.btn-reset:hover {
+    background-color: #dcdcdc;
+}
+
+.stats-area {
+    margin-top: 1.5rem;
+    width: 100%;
+    border-top: 2px dashed #e2e8f0;
+    padding-top: 1.5rem;
+    color: #64748b;
+    font-size: 1rem;
+}
+
+.stats-area strong {
+    color: #03522f;
+    font-size: 1.2rem;
+}
+
+/* Modal CSS */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    backdrop-filter: blur(3px);
+}
+
+.modal-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.modal-content {
+    background-color: #ffffff;
+    padding: 2.5rem 2rem;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 360px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transform: translateY(0) scale(1);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.hidden .modal-content {
+    transform: translateY(20px) scale(0.95);
+}
+
+.modal-content h3 {
+    color: #1b4332;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.modal-content p {
+    color: #555;
+    margin-bottom: 2rem;
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.btn-secondary {
+    background-color: #e8e8e8;
+    color: #333;
+    flex: 1;
+    padding: 1rem;
+}
+
+.btn-secondary:hover {
+    background-color: #dcdcdc;
+}
+
+.btn-danger {
+    background-color: #ef4444;
+    color: white;
+    flex: 1;
+    padding: 1rem;
+}
+
+.btn-danger:hover {
+    background-color: #dc2626;
+}
+
+.btn-status-puasa:hover {
+    opacity: 0.9;
+    transform: scale(1.02);
+}
+
+.btn-status-halangan:hover {
+    opacity: 0.9;
+    transform: scale(1.02);
+}
+
+.btn-status-tidak:hover {
+    opacity: 0.9;
+    transform: scale(1.02);
+}
+
+.modal-actions-vertical .btn {
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.2s;
+}
+
+footer {
+    background-color: #03522f;
+    color: #f4f1de;
+    text-align: center;
+    padding: 2rem;
+    margin-top: 2rem;
+}
+
+/* Custom Toast Notification */
+.toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    pointer-events: none;
+    /* Let clicks pass through if covered */
+}
+
+.toast {
+    background-color: #fff;
+    color: #333;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 500;
+    font-size: 1rem;
+    transform: translateX(120%);
+    opacity: 0;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s ease;
+    border-left: 5px solid #03522f;
+    /* default success color */
+}
+
+.toast.show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.toast.error {
+    border-left-color: #ef4444;
+}
+
+.toast.warning {
+    border-left-color: #f59e0b;
+}
+
+.toast-icon {
+    font-size: 1.2rem;
+}
+
+@media (max-width: 600px) {
+    .tabs-nav {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        /* Smooth scrolling on iOS */
+        /* Hide scrollbar for a cleaner look while keeping it scrollable */
+        scrollbar-width: none;
+    }
+
+    .tabs-nav::-webkit-scrollbar {
+        display: none;
+    }
+
+    .tab-btn {
+        flex: 0 0 auto;
+        white-space: nowrap;
+        padding: 1rem 1.2rem;
+    }
+
+    .progress-body {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .progress-header {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .shalat-header-flex {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .shalat-clock-badge {
+        align-items: center;
+        width: 100%;
+        max-width: 250px;
+    }
+}
