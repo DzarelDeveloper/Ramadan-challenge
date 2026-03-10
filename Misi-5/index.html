@@ -93,20 +93,21 @@
                                 <div id="countdown-text" class="countdown-text">Waktu <span id="next-prayer-name"
                                         class="fw-bold">...</span> dalam:</div>
                                 <div id="countdown-timer" class="countdown-timer mt-1">-- : -- : --</div>
-
-                                <!-- Fasting Progress Bar -->
-                                <div id="fasting-progress-container" class="fasting-progress-wrapper hidden mt-3">
-                                    <div class="progress-labels">
-                                        <span class="label-start">Imsak (<span id="progress-start-time"></span>)</span>
-                                        <span class="label-end">Maghrib (<span id="progress-end-time"></span>)</span>
-                                    </div>
-                                    <div class="progress-track">
-                                        <div id="fasting-progress-bar" class="progress-fill"></div>
-                                    </div>
-                                    <div id="fasting-progress-text" class="progress-percentage">0% Puasa Selesai</div>
-                                </div>
                             </div>
                         </div>
+
+                        <!-- Fasting Progress Bar (Standalone) -->
+                        <div id="fasting-progress-container" class="fasting-progress-wrapper hidden">
+                            <div class="progress-labels">
+                                <span class="label-start">Imsak (<span id="progress-start-time"></span>)</span>
+                                <span class="label-end">Maghrib (<span id="progress-end-time"></span>)</span>
+                            </div>
+                            <div class="progress-track">
+                                <div id="fasting-progress-bar" class="progress-fill"></div>
+                            </div>
+                            <div id="fasting-progress-text" class="progress-percentage">0% Puasa Selesai</div>
+                        </div>
+
                         <div class="prayer-times-grid" id="daily-grid">
                             <!-- Daily cards injected here -->
                         </div>

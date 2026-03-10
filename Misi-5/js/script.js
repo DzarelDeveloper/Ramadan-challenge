@@ -408,7 +408,7 @@ function startLiveCountdown(todaySchedule, prayers, nextPrayerIndex) {
             if (percentage > 100) percentage = 100;
 
             fastingProgressBar.style.width = `${percentage}%`;
-            fastingProgressText.textContent = `${percentage.toFixed(1)}% Puasa Selesai`;
+            fastingProgressText.textContent = `${percentage.toFixed(1)}% Puasa untuk hari ini selesai`;
 
         } else {
             fastingProgressContainer.classList.add('hidden');

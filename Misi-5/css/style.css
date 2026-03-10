@@ -457,9 +457,11 @@ main {
 
 /* Fasting Progress Bar */
 .fasting-progress-wrapper {
-    margin-top: 1.5rem;
-    padding-top: 1rem;
-    border-top: 1px dashed rgba(45, 106, 79, 0.2);
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    border: 1px dashed var(--accent);
     width: 100%;
 }
 
