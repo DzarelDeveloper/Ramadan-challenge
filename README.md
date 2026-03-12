@@ -89,6 +89,12 @@ Website ini dikembangkan secara bertahap melalui beberapa misi, dimulai dari str
 
 🔗 **Live Demo Final:** [Misi 6 - Portal Ramadhan Terpadu](https://dzareldeveloper.github.io/Ramadan-challenge/Misi-6/)
 
+### 📱 Download Aplikasi (APK)
+
+Versi Android dari portal ini sekarang tersedia! Anda dapat mengunduh APK terbaru langsung dari GitHub Releases:
+
+🔗 **Download Sekarang:** [Ramadhan Portal APK (Latest Release)](https://github.com/DzarelDeveloper/Ramadan-challenge/releases)
+
 ---
 
 ## 🛠️ Tech Stack
