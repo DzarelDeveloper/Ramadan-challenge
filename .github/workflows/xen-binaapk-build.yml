@@ -81,14 +81,14 @@ jobs:
             fs.writeFileSync(file, JSON.stringify(config, null, 2));
           "
 
-- name: Generate App Icons
-  working-directory: ./builder
-  run: |
-    if [ -f "../user_repo/android-icon.png" ]; then
-      cp ../user_repo/android-icon.png ./icon.png
-      npm install @capacitor/assets --no-save
-      npx capacitor-assets generate --android --assetPath .
-    fi
+      - name: Generate App Icons
+        working-directory: ./builder
+        run: |
+          if [ -f "../user_repo/android-icon.png" ]; then
+            cp ../user_repo/android-icon.png ./icon.png
+            npm install @capacitor/assets --no-save
+            npx capacitor-assets generate --android --assetPath .
+          fi
 
       - name: Install Dependencies
         working-directory: ./builder
