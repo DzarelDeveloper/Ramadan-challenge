@@ -21,6 +21,8 @@ document.addEventListener("DOMContentLoaded", () => {
   let totalDailyCount = 0;
   let currentDzikirId = "subhanallah";
 
+  initFromStorage();
+
   dzikirTypeSelect.addEventListener("change", () => {
     handleDzikirChange();
   });
