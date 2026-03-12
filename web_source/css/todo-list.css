@@ -17,25 +17,6 @@ body {
   min-height: 100vh;
 }
 
-header {
-  background-color: #03522f;
-  color: #f4f1de;
-  text-align: center;
-  padding: 3rem 1.5rem;
-  border-bottom: 6px solid #ffb300;
-}
-
-header h1 {
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
-  font-weight: 800;
-}
-
-header p {
-  font-size: 1.1rem;
-  opacity: 0.95;
-}
-
 main {
   flex: 1;
   display: flex;
@@ -88,6 +69,8 @@ main {
   display: flex;
   align-items: center;
   gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .progress-circle {
@@ -134,21 +117,29 @@ main {
   display: flex;
   background-color: #ffffff;
   border-radius: 12px;
-  overflow: hidden;
+  overflow-x: auto;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  scrollbar-width: none; /* Hide scrollbar Firefox */
+  -ms-overflow-style: none; /* Hide scrollbar IE/Edge */
+}
+
+.tabs-nav::-webkit-scrollbar {
+  display: none; /* Hide scrollbar Chrome/Safari */
 }
 
 .tab-btn {
   flex: 1;
   background: none;
   border: none;
-  padding: 1rem 0.5rem;
-  font-size: 1rem;
+  padding: 1rem 1.2rem;
+  font-size: 0.95rem;
   font-weight: 600;
   color: #64748b;
   cursor: pointer;
   transition: all 0.3s ease;
-  border-bottom: 3px solid transparent;
+  border-bottom: 4px solid transparent;
+  white-space: nowrap;
+  min-width: 120px;
 }
 
 .tab-btn:hover {
@@ -193,7 +184,7 @@ main {
 }
 
 .section-title {
-  font-size: 1.5rem;
+  font-size: clamp(1.2rem, 5vw, 1.5rem);
   color: #1b4332;
   border-bottom: 2px solid #ffb300;
   padding-bottom: 0.5rem;
@@ -481,7 +472,7 @@ main {
 
 .calendar-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(clamp(40px, 12vw, 50px), 1fr));
   gap: 0.5rem;
   margin-bottom: 1.5rem;
 }
@@ -658,7 +649,7 @@ main {
 }
 
 .count-display {
-  font-size: 6rem;
+  font-size: clamp(3.5rem, 20vw, 6rem);
   font-weight: 700;
   color: #111111;
   line-height: 1;
@@ -917,14 +908,6 @@ footer {
 }
 
 @media (max-width: 600px) {
-  header {
-    padding: 2.5rem 1rem;
-  }
-
-  header h1 {
-    font-size: 2.2rem;
-  }
-
   .tabs-nav {
     flex-wrap: nowrap;
     overflow-x: auto;
