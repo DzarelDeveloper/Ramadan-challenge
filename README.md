@@ -1,6 +1,6 @@
-# 🌙 Ramadhan Portal — Ramadan Coding Challenge 2026
+# 🌙 Marhaban Ya Marhaban — Ramadan Coding Challenge 2026
 
-Ramadhan Portal adalah proyek website frontend yang dikembangkan sebagai bagian dari Ramadan Coding Challenge 2026 oleh Alhazen Academy. Proyek ini bertujuan untuk membangun portal web bertema Ramadhan yang berisi berbagai fitur informatif dan bermanfaat, seperti kumpulan doa, jadwal imsakiyah, dan halaman interaktif lainnya.
+Marhaban Ya Marhaban adalah proyek website frontend yang dikembangkan sebagai bagian dari Ramadan Coding Challenge 2026 oleh Alhazen Academy. Proyek ini bertujuan untuk membangun portal web bertema Ramadhan yang berisi berbagai fitur informatif dan bermanfaat, seperti kumpulan doa, jadwal imsakiyah, dan halaman interaktif lainnya.
 
 Website ini dikembangkan secara bertahap melalui beberapa misi, dimulai dari struktur HTML dan styling CSS dasar, hingga integrasi JavaScript dan deployment ke hosting publik.
 
@@ -70,21 +70,15 @@ Website ini dikembangkan secara bertahap melalui beberapa misi, dimulai dari str
 
 🔗 **Live Demo:** [Misi 4 - Ramadhan To-Do List](https://dzareldeveloper.github.io/Ramadan-challenge/Misi-4/)
 
-### Misi 5 — Jadwal Imsakiyah Interaktif
+### Misi 5 — Portal Ramadhan Terpadu (Final Hub)
 
-* **Integrasi API**: Mengambil data jadwal shalat dan imsak secara real-time dari API publik (MyQuran).
-* **Pencarian Kota Pintar**: Dropdown khusus (*custom select*) yang memungkinkan pengguna mengetik dan mencari nama kota/kabupaten dengan cepat.
-* **Fitur Live Countdown**: Hitungan mundur (*countdown timer*) yang presisi menuju waktu shalat atau imsak berikutnya.
-* **Peringatan Waktu Kritis**: Indikator visual berdenyut (*pulsing alert*) saat waktu tersisa kurang dari 5 menit.
-* **Progress Bar Puasa**: Garis kemajuan visual yang menunjukkan persentase waktu berpuasa yang telah dilalui (antara Imsak hingga Maghrib).
-* **Tampilan Fleksibel & Responsif**:
-    * **Hari Ini (Card View)**: Menampilkan jadwal hari ini dalam bentuk kartu yang indah, di mana waktu shalat terdekat otomatis disorot.
-    * **Sebulan (Table View)**: Menampilkan jadwal sebulan penuh dalam bentuk tabel dengan *sticky header* agar mudah dibaca saat di-scroll.
-* **Personalisasi (Local Storage)**: Sistem secara otomatis mengingat kota terakhir yang dipilih pengguna sehingga besok tidak perlu menyetel ulang.
+* **Integrasi Seluruh Misi**: Kesimpulan dari seluruh misi, menggabungkan Jadwal Imsakiyah, Doa Ramadhan, Hitung Dzikir, Kalkulator Zakat, Baca Al-Qur'an, dan Ramadhan To-Do List ke dalam satu portal terpadu.
+* **Web Components**: Implementasi *Custom Elements* (seperti `<portal-navbar>` dan `<portal-footer>`) untuk menciptakan komponen *reusable* layaknya framework modern, menggunakan JavaScript Vanilla murni.
+* **Dashboard Jadwal Imsakiyah**: Mengambil data jadwal shalat secara *real-time* via API, dilengkapi *live countdown*, progres puasa, serta fitur pencarian pintar untuk menyesuaikan lokasi pengguna.
+* **Navigasi Multi-Halaman Responsif**: Pengalaman transisi antar fitur yang mulus dengan *state* dan *styling* konsisten di seluruh halaman, memastikan keramahan pengguna baik di *desktop* maupun *mobile*.
+* **Siap Produksi (Production Ready)**: Kode HTML, CSS, dan JavaScript telah dioptimisasi, di-*refactor* menerapkan prinsip DRY (Don't Repeat Yourself), dan siap diluncurkan.
 
-🔗 **Live Demo:** [Misi 5 - Jadwal Imsakiyah](https://dzareldeveloper.github.io/Ramadan-challenge/Misi-5/)
-
-(Misi selanjutnya akan ditambahkan secara bertahap)
+🔗 **Live Demo Final:** [Misi 5 - Portal Ramadhan Terpadu](https://dzareldeveloper.github.io/Ramadan-challenge/Misi-5/)
 
 ---
 
@@ -131,10 +125,16 @@ Ramadan-challenge/
 │
 ├── Misi-5/
 │   ├── index.html
+│   ├── doa-sahur-buka.html
+│   ├── hitung-zikir.html
+│   ├── kalkulator-zakat.html
+│   ├── quran.html
+│   ├── todo-list.html
 │   ├── css/
-│   │   └── style.css
+│   │   ├── (Kumpulan file CSS modular)
 │   └── js/
-│       └── script.js
+│       ├── components/ (Web Components)
+│       └── (Kumpulan file JS modular)
 │
 └── README.md
 ```
@@ -143,13 +143,11 @@ Ramadan-challenge/
 
 ## 🌐 Status Proyek
 
-Proyek sedang dalam tahap pengembangan sebagai bagian dari challenge.
+**Selesai / Production Ready** ✅
 
-Target akhir:
+Proyek ini telah menyelesaikan semua misi dari tantangan Ramadan Coding Challenge 2026. Portal terpadu berhasil dibangun, responsif, dan siap digunakan sehari-hari melengkapi ibadah di bulan Ramadhan.
 
-* Website portal lengkap
-* Responsive design
-* Deployment ke GitHub Pages 
+Telah tersedia live demo via GitHub Pages.
 
 ---
 

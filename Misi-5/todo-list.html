@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ramadhan To-Do List</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/navbar.css" />
+    <link rel="stylesheet" href="css/todo-list.css" />
+  </head>
+
+  <body>
+    <portal-navbar></portal-navbar>
+
+    <section class="page-hero">
+      <h1>Ramadhan To-Do List</h1>
+      <p>Pantau dan tingkatkan konsistensi ibadah harianmu</p>
+    </section>
+
+    <main>
+      <div class="app-container">
+        <section class="global-progress-card">
+          <div class="progress-header">
+            <h2>Progress Hari Ini</h2>
+            <span id="global-date" class="date-badge"></span>
+          </div>
+          <div class="progress-body">
+            <div class="progress-circle" id="global-progress-circle">
+              <span id="global-progress-text">0%</span>
+            </div>
+            <div class="progress-info">
+              <h3 id="motivation-title">Bismillah!</h3>
+              <p id="motivation-desc">
+                Mulai hari ini dengan niat yang ikhlas.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <nav class="tabs-nav">
+          <button class="tab-btn active" data-tab="shalat">
+            🕋 Shalat Wajib
+          </button>
+          <button class="tab-btn" data-tab="quran">📖 Baca Qur'an</button>
+          <button class="tab-btn" data-tab="puasa">🍽️ Puasa</button>
+          <button class="tab-btn" data-tab="dzikir">📿 Dzikir</button>
+        </nav>
+
+        <div class="tab-content-container">
+          <div id="tab-shalat" class="tab-content active">
+            <div class="shalat-header-flex">
+              <h2 class="section-title" style="margin-bottom: 0">
+                Checklist Shalat Wajib
+              </h2>
+              <div class="shalat-clock-badge">
+                <span id="digital-clock">00:00:00</span>
+                <span id="location-text">📍 Jakarta</span>
+              </div>
+            </div>
+            <div class="checklist-container">
+              <label class="check-item">
+                <input type="checkbox" class="shalat-check" value="subuh" />
+                <span class="checkmark"></span> Subuh
+                <span class="shalat-time" id="time-subuh">--:--</span>
+              </label>
+              <label class="check-item">
+                <input type="checkbox" class="shalat-check" value="dzuhur" />
+                <span class="checkmark"></span> Dzuhur
+                <span class="shalat-time" id="time-dzuhur">--:--</span>
+              </label>
+              <label class="check-item">
+                <input type="checkbox" class="shalat-check" value="ashar" />
+                <span class="checkmark"></span> Ashar
+                <span class="shalat-time" id="time-ashar">--:--</span>
+              </label>
+              <label class="check-item">
+                <input type="checkbox" class="shalat-check" value="maghrib" />
+                <span class="checkmark"></span> Maghrib
+                <span class="shalat-time" id="time-maghrib">--:--</span>
+              </label>
+              <label class="check-item">
+                <input type="checkbox" class="shalat-check" value="isya" />
+                <span class="checkmark"></span> Isya
+                <span class="shalat-time" id="time-isya">--:--</span>
+              </label>
+            </div>
+            <div class="feature-status">
+              <div class="progress-bar-container">
+                <div
+                  class="progress-bar-fill"
+                  id="shalat-progress-fill"
+                  style="width: 0%"
+                ></div>
+              </div>
+              <p class="status-text" id="shalat-status-text">
+                0% - Belum optimal
+              </p>
+            </div>
+            <button class="btn btn-save" id="btn-save-shalat">
+              Simpan Progress Shalat
+            </button>
+          </div>
+
+          <div id="tab-quran" class="tab-content">
+            <h2 class="section-title">Target Tilawah Qur'an</h2>
+            <div class="form-group row-input">
+              <label for="quran-target">Target Halaman / Hari</label>
+              <div
+                class="input-wrapper"
+                style="position: relative; display: flex; align-items: center"
+              >
+                <input
+                  type="number"
+                  id="quran-target"
+                  min="1"
+                  value="20"
+                  disabled
+                />
+                <button
+                  id="btn-edit-target"
+                  class="btn-icon"
+                  title="Ubah target (Setiap 3 hari)"
+                  style="
+                    position: absolute;
+                    right: 10px;
+                    background: none;
+                    border: none;
+                    cursor: pointer;
+                    color: #64748b;
+                    padding: 4px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                  "
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M12 20h9"></path>
+                    <path
+                      d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"
+                    ></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div class="form-group row-input">
+              <label for="quran-read">Halaman Dibaca</label>
+              <input type="number" id="quran-read" min="0" value="0" />
+            </div>
+            <div class="form-group quran-quick-action">
+              <label class="check-item">
+                <input type="checkbox" id="quran-done-check" />
+                <span class="checkmark"></span> Tandai target selesai
+              </label>
+            </div>
+            <div class="feature-status mt-3">
+              <div class="progress-bar-container">
+                <div
+                  class="progress-bar-fill"
+                  id="quran-progress-fill"
+                  style="width: 0%"
+                ></div>
+              </div>
+              <p class="status-text" id="quran-status-text">
+                0% - Masih bisa ditambah
+              </p>
+            </div>
+            <button class="btn btn-save" id="btn-save-quran">
+              Simpan Progress Qur'an
+            </button>
+          </div>
+
+          <div id="tab-puasa" class="tab-content">
+            <h2 class="section-title">Jurnal Puasa Ramadhan</h2>
+            <div class="puasa-today-card">
+              <h3>
+                Puasa Hari Ini: <span id="puasa-day-indicator">Hari ke-1</span>
+              </h3>
+              <label class="check-item large-check">
+                <input type="checkbox" id="puasa-today-check" />
+                <span class="checkmark"></span> Alhamdulillah, sudah puasa hari
+                ini
+              </label>
+            </div>
+
+            <h3 class="subsection-title">Kalender Ramadhan</h3>
+            <div class="calendar-grid" id="puasa-calendar"></div>
+
+            <div class="feature-status mt-3">
+              <div class="progress-bar-container">
+                <div
+                  class="progress-bar-fill"
+                  id="puasa-progress-fill"
+                  style="width: 0%"
+                ></div>
+              </div>
+              <div
+                class="puasa-stats-row"
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  margin-top: 5px;
+                "
+              >
+                <p class="status-text" id="puasa-status-text" style="margin: 0">
+                  0/30 Hari Puasa - Semangat!
+                </p>
+                <p
+                  id="puasa-qadha-text"
+                  style="
+                    margin: 0;
+                    font-size: 0.85rem;
+                    color: #ef4444;
+                    font-weight: bold;
+                  "
+                ></p>
+              </div>
+            </div>
+            <button class="btn btn-save" id="btn-save-puasa">
+              Simpan Progress Puasa
+            </button>
+          </div>
+
+          <div id="tab-dzikir" class="tab-content dzikir-tab-content">
+            <div class="dzikir-wrapper">
+              <h2 class="dzikir-title">Hitung Zikir Anda Hari ini</h2>
+
+              <div class="dzikir-selector">
+                <label for="dzikir-type">Pilih Dzikir:</label>
+                <select id="dzikir-type">
+                  <option
+                    value="subhanallah"
+                    data-target="33"
+                    data-arabic="سُبْحَانَ اللَّهِ"
+                    data-latin="Subhanallah"
+                  >
+                    Subhanallah (33x)
+                  </option>
+                  <option
+                    value="alhamdulillah"
+                    data-target="33"
+                    data-arabic="الْحَمْدُ لِلَّهِ"
+                    data-latin="Alhamdulillah"
+                  >
+                    Alhamdulillah (33x)
+                  </option>
+                  <option
+                    value="allahuakbar"
+                    data-target="34"
+                    data-arabic="اللَّهُ أَكْبَرُ"
+                    data-latin="Allahu Akbar"
+                  >
+                    Allahu Akbar (34x)
+                  </option>
+                  <option
+                    value="istighfar"
+                    data-target="100"
+                    data-arabic="أَسْتَغْفِرُ اللَّهَ"
+                    data-latin="Astaghfirullah"
+                  >
+                    Istighfar (100x)
+                  </option>
+                  <option
+                    value="tahlil"
+                    data-target="100"
+                    data-arabic="لَا إِلَهَ إِلَّا اللَّهُ"
+                    data-latin="La Ilaha Illallah"
+                  >
+                    Tahlil (100x)
+                  </option>
+                  <option
+                    value="custom"
+                    data-target="100"
+                    data-arabic=""
+                    data-latin="Dzikir Bebas"
+                  >
+                    Bebas / Custom
+                  </option>
+                </select>
+              </div>
+
+              <div class="dzikir-text" id="dzikir-text-container">
+                <p class="arabic" id="dzikir-arabic">سُبْحَانَ اللَّهِ</p>
+                <p class="latin" id="dzikir-latin">Subhanallah</p>
+              </div>
+
+              <div class="progress-bar-container mt-3">
+                <div
+                  class="progress-bar dzikir-progress-bar"
+                  id="dzikir-progress-bar"
+                ></div>
+              </div>
+
+              <div class="target-display">
+                Target: <span id="target-count">33</span>
+              </div>
+
+              <div class="count-display" id="count-display-container">
+                <span id="current-count">0</span>
+              </div>
+
+              <div id="notification-area" class="notification hidden">
+                Alhamdulillah, target tercapai! ✨
+              </div>
+
+              <div class="button-group">
+                <button id="add-btn" class="btn btn-add">
+                  <span class="btn-icon">+</span>
+                  <span class="btn-text">Tambah</span>
+                </button>
+                <button id="reset-btn" class="btn btn-reset">Reset</button>
+              </div>
+
+              <div class="stats-area">
+                <p>
+                  Total Dzikir Hari Ini:
+                  <strong id="total-daily-count">0</strong>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div id="reset-modal" class="modal-overlay hidden">
+      <div class="modal-content">
+        <h3>Reset Hitungan?</h3>
+        <p>Apakah Anda yakin ingin mengulang dari awal?</p>
+        <div class="modal-actions">
+          <button id="cancel-reset-btn" class="btn btn-secondary">Batal</button>
+          <button id="confirm-reset-btn" class="btn btn-danger">Hapus</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="gender-modal" class="modal-overlay hidden">
+      <div class="modal-content gender-modal">
+        <h3>Selamat Datang di Jurnal Puasa</h3>
+        <p>Pilih jenis kelamin Anda untuk menyesuaikan opsi jurnal:</p>
+        <div class="modal-actions gender-actions">
+          <button
+            id="gender-male-btn"
+            class="btn btn-primary"
+            style="background-color: #03522f; color: white"
+          >
+            Laki-laki
+          </button>
+          <button
+            id="gender-female-btn"
+            class="btn btn-primary"
+            style="background-color: #03522f; color: white"
+          >
+            Perempuan
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="puasa-status-modal" class="modal-overlay hidden">
+      <div class="modal-content">
+        <h3 id="puasa-modal-date-title">Status Puasa: Hari ke-X</h3>
+        <p>Bagaimana ibadah puasa Anda hari ini?</p>
+        <div
+          class="modal-actions-vertical"
+          style="
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 15px;
+          "
+        >
+          <button
+            class="btn btn-status-puasa"
+            data-status="puasa"
+            style="background-color: #03522f; color: white; padding: 12px"
+          >
+            Alhamdulillah, Puasa
+          </button>
+          <button
+            id="btn-halangan"
+            class="btn btn-status-halangan"
+            data-status="halangan"
+            style="
+              background-color: #ffb300;
+              color: #03522f;
+              padding: 12px;
+              font-weight: bold;
+            "
+          >
+            Lagi Halangan / Sakit
+          </button>
+          <button
+            class="btn btn-status-tidak"
+            data-status="tidak-puasa"
+            style="background-color: #ef4444; color: white; padding: 12px"
+          >
+            Sedang Tidak Puasa
+          </button>
+          <button
+            id="close-puasa-modal"
+            class="btn btn-secondary"
+            style="margin-top: 5px"
+          >
+            Batal
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="info-modal" class="modal-overlay hidden">
+      <div class="modal-content">
+        <h3 id="info-modal-title">Pesan Ibadah</h3>
+        <p id="info-modal-msg">Pesan akan muncul di sini.</p>
+        <div class="modal-actions">
+          <button
+            id="close-info-modal"
+            class="btn btn-primary"
+            style="
+              background-color: #03522f;
+              color: white;
+              width: 100%;
+              padding: 12px;
+              border: none;
+              border-radius: 8px;
+              cursor: pointer;
+            "
+          >
+            Mengerti
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <portal-footer></portal-footer>
+
+    <div id="toast-container" class="toast-container"></div>
+
+    <script src="js/todo-list.js"></script>
+    <script src="js/components/portal-navbar.js"></script>
+    <script src="js/components/portal-footer.js"></script>
+  </body>
+</html>

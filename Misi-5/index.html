@@ -1,147 +1,100 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jadwal Imsakiyah - Ramadhan Challenge</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Marhaban Ya Marhaban</title>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700;800&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-</head>
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/navbar.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
 
-<body>
-    <header>
-        <div class="header-pattern"></div>
-        <div class="header-content">
-            <h1>Jadwal Imsakiyah</h1>
-            <p>Pantau jadwal imsak dan sholat di kotamu</p>
-        </div>
-    </header>
+  <body>
+    <portal-navbar></portal-navbar>
 
     <main>
-        <div class="app-container">
-            <section class="selection-card">
-                <div class="card-header">
-                    <span class="icon">📍</span>
-                    <h2 class="section-title">Pilih Lokasi</h2>
-                </div>
-                <div class="dzikir-selector">
-                    <label for="city-search">Kota / Kabupaten:</label>
-                    <div class="location-input-group">
-                        <div class="custom-select-wrapper" id="custom-select-wrapper">
-                            <div class="select-trigger" id="select-trigger">
-                                <span id="selected-city-text">Memuat daftar kota...</span>
-                                <div class="arrow">▼</div>
-                            </div>
-                            <div class="custom-options-container" id="custom-options-container">
-                                <div class="search-box">
-                                    <input type="text" id="city-search" placeholder="Cari kota/kabupaten..."
-                                        autocomplete="off">
-                                </div>
-                                <ul class="options-list" id="options-list">
-                                    <!-- Options will be injected here -->
-                                </ul>
-                            </div>
-                            <select id="city-select" style="display: none;">
-                                <!-- Hidden native select for fallback/data binding if needed -->
-                            </select>
-                        </div>
-                    </div>
-                </div>
-            </section>
+      <section id="home">
+        <h1>Marhaban Ya Marhaban</h1>
+        <p>
+          Pusat navigasi ibadah Anda di bulan suci Ramadhan. Dapatkan kemudahan
+          akses berbagai fitur ibadah dalam satu pintu untuk memaksimalkan
+          amalan Anda.
+        </p>
+      </section>
 
-            <section class="schedule-card">
-                <div class="schedule-header-flex">
-                    <h2 class="section-title" id="location-name">Memuat Lokasi...</h2>
+      <section id="fitur">
+        <h2 class="section-title">Fitur Unggulan</h2>
+        <div class="grid-container">
+          <div class="card">
+            <div class="card-icon">
+              <i class="fas fa-book-open"></i>
+            </div>
+            <h3>Al-Qur'an Digital</h3>
+            <p>
+              Baca, pahami terjemahan, dan dengarkan lantunan ayat suci
+              Al-Qur'an 30 Juz secara lengkap dan interaktif.
+            </p>
+            <a href="quran.html" class="btn-buka">Buka Fitur</a>
+          </div>
 
-                    <div class="header-controls">
-                        <span id="current-month" class="date-badge">...</span>
-                        <div class="view-toggle">
-                            <button id="btn-view-cards" class="toggle-btn active" title="Tampilan Hari Ini">Hari
-                                Ini</button>
-                            <button id="btn-view-table" class="toggle-btn" title="Tampilan Bulanan">Sebulan</button>
-                        </div>
-                    </div>
-                </div>
+          <div class="card">
+            <div class="card-icon">
+              <i class="fas fa-utensils"></i>
+            </div>
+            <h3>Doa Ramadhan</h3>
+            <p>
+              Lafal niat puasa, doa sahur, dan doa berbuka puasa yang shahih
+              lengkap dengan latin dan artinya.
+            </p>
+            <a href="doa-sahur-buka.html" class="btn-buka">Buka Fitur</a>
+          </div>
 
-                <div id="loading" class="status-message">
-                    <div class="spinner"></div>
-                    <p>Memuat data jadwal...</p>
-                </div>
+          <div class="card">
+            <div class="card-icon">
+              <i class="fas fa-hands-praying"></i>
+            </div>
+            <h3>Hitung Zikir</h3>
+            <p>
+              Tingkatkan amalan harian dengan dzikir interaktif yang dilengkapi
+              dengan target serta progres fitur.
+            </p>
+            <a href="hitung-zikir.html" class="btn-buka">Buka Fitur</a>
+          </div>
 
-                <div id="error" class="status-message hidden">
-                    <div class="error-icon">⚠️</div>
-                    <p class="error-text">Gagal memuat data. Periksa koneksi internet.</p>
-                    <button onclick="retryFetch()" class="btn-retry">Coba Lagi</button>
-                </div>
+          <div class="card">
+            <div class="card-icon">
+              <i class="fas fa-calculator"></i>
+            </div>
+            <h3>Kalkulator Zakat</h3>
+            <p>
+              Hitung kewajiban zakat penghasilan, perusahaan, perdagangan,
+              maupun emas secara akurat dan mudah.
+            </p>
+            <a href="kalkulator-zakat.html" class="btn-buka">Buka Fitur</a>
+          </div>
 
-                <div id="schedule-content" class="hidden">
-                    <!-- Daily Cards View -->
-                    <div id="view-cards" class="daily-cards-container">
-                        <div class="date-header-card d-flex-between">
-                            <div class="date-info-left">
-                                <h3 id="daily-date-display">...</h3>
-                                <p id="daily-hijri-display" class="hijri-date">Ramadhan 1447 H</p>
-                            </div>
-
-                            <!-- Realtime Countdown -->
-                            <div class="countdown-container mt-3">
-                                <div id="countdown-text" class="countdown-text">Waktu <span id="next-prayer-name"
-                                        class="fw-bold">...</span> dalam:</div>
-                                <div id="countdown-timer" class="countdown-timer mt-1">-- : -- : --</div>
-                            </div>
-                        </div>
-
-                        <!-- Fasting Progress Bar (Standalone) -->
-                        <div id="fasting-progress-container" class="fasting-progress-wrapper hidden">
-                            <div class="progress-labels">
-                                <span class="label-start">Imsak (<span id="progress-start-time"></span>)</span>
-                                <span class="label-end">Maghrib (<span id="progress-end-time"></span>)</span>
-                            </div>
-                            <div class="progress-track">
-                                <div id="fasting-progress-bar" class="progress-fill"></div>
-                            </div>
-                            <div id="fasting-progress-text" class="progress-percentage">0% Puasa Selesai</div>
-                        </div>
-
-                        <div class="prayer-times-grid" id="daily-grid">
-                            <!-- Daily cards injected here -->
-                        </div>
-                    </div>
-
-                    <!-- Monthly Table View -->
-                    <div id="view-table" class="table-responsive hidden">
-                        <table id="imsakiyah-table">
-                            <thead>
-                                <tr>
-                                    <th>Tanggal</th>
-                                    <th>Imsak</th>
-                                    <th>Subuh</th>
-                                    <th>Dzuhur</th>
-                                    <th>Ashar</th>
-                                    <th>Maghrib</th>
-                                    <th>Isya</th>
-                                </tr>
-                            </thead>
-                            <tbody id="schedule-body">
-                                <!-- Data will be injected here -->
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </section>
+          <div class="card">
+            <div class="card-icon">
+              <i class="fas fa-tasks"></i>
+            </div>
+            <h3>Ramadhan To-Do List</h3>
+            <p>
+              Pantau dan tingkatkan konsistensi ibadah harian seperti shalat
+              wajib, tilawah quran, dan puasa.
+            </p>
+            <a href="todo-list.html" class="btn-buka">Buka Fitur</a>
+          </div>
         </div>
+      </section>
     </main>
 
-    <footer>
-        <p>Semoga ibadah kita di bulan Ramadhan ini diterima oleh Allah SWT.</p>
-    </footer>
+    <portal-footer></portal-footer>
 
     <script src="js/script.js"></script>
-</body>
-
+    <script src="js/components/portal-navbar.js"></script>
+    <script src="js/components/portal-footer.js"></script>
+  </body>
 </html>

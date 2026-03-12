@@ -1,0 +1,334 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-dark);
+  line-height: 1.6;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+.quran-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 5%;
+  min-height: 60vh;
+}
+
+.quran-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.tab-btn {
+  padding: 10px 25px;
+  background-color: transparent;
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tab-btn:hover {
+  background-color: rgba(45, 90, 39, 0.1);
+}
+
+.tab-btn.active {
+  background-color: var(--primary);
+  color: var(--text-light);
+  box-shadow: 0 4px 10px rgba(45, 90, 39, 0.3);
+}
+
+.search-container {
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto 40px;
+}
+
+.search-container input {
+  width: 100%;
+  padding: 15px 20px 15px 50px;
+  font-size: 1.1rem;
+  border: 2px solid rgba(45, 90, 39, 0.2);
+  border-radius: 30px;
+  outline: none;
+  transition: all 0.3s ease;
+  background-color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.search-container input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 5px 15px rgba(45, 90, 39, 0.15);
+}
+
+.search-icon {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--primary);
+  font-size: 1.2rem;
+  opacity: 0.7;
+}
+
+.loader {
+  text-align: center;
+  padding: 50px;
+  font-size: 1.2rem;
+  color: var(--primary);
+  width: 100%;
+}
+
+.loader i {
+  margin-right: 10px;
+}
+
+.surah-grid,
+.juz-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.surah-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.surah-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  border-color: var(--secondary);
+}
+
+.surah-number {
+  width: 45px;
+  height: 45px;
+  background-color: rgba(45, 90, 39, 0.1);
+  color: var(--primary);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-right: 15px;
+  flex-shrink: 0;
+}
+
+.surah-info {
+  flex-grow: 1;
+}
+
+.surah-name-latin {
+  font-weight: bold;
+  color: var(--primary);
+  font-size: 1.1rem;
+  margin-bottom: 2px;
+}
+
+.surah-translation {
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 4px;
+}
+
+.surah-details-meta {
+  font-size: 0.8rem;
+  color: #888;
+  text-transform: uppercase;
+}
+
+.surah-name-arabic {
+  font-size: 1.5rem;
+  color: var(--primary);
+  font-weight: normal;
+  font-family: "Scheherazade New", "Amiri", serif;
+  text-align: right;
+}
+
+.btn-back {
+  background: none;
+  border: none;
+  color: var(--primary);
+  font-size: 1.1rem;
+  cursor: pointer;
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: color 0.3s ease;
+  font-weight: 600;
+}
+
+.btn-back:hover {
+  color: var(--secondary);
+}
+
+.surah-header-info {
+  text-align: center;
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  margin-bottom: 30px;
+  border-top: 4px solid var(--secondary);
+}
+
+.surah-header-info h2 {
+  color: var(--primary);
+  font-size: 2rem;
+  margin-bottom: 5px;
+}
+
+.surah-header-info p {
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.surah-header-arabic {
+  font-size: 2.5rem;
+  color: var(--primary);
+  font-family: "Scheherazade New", "Amiri", serif;
+  margin-bottom: 20px;
+}
+
+.bismillah {
+  text-align: center;
+  font-size: 2.2rem;
+  font-family: "Scheherazade New", "Amiri", serif;
+  color: var(--text-dark);
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  border-bottom: 1px dashed rgba(45, 90, 39, 0.3);
+}
+
+.ayat-card {
+  background: white;
+  border-radius: 12px;
+  padding: 25px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.04);
+}
+
+.ayat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.ayat-number {
+  font-weight: bold;
+  color: var(--primary);
+  background: rgba(45, 90, 39, 0.1);
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+.ayat-actions button {
+  background: none;
+  border: none;
+  color: var(--primary);
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+  padding: 5px;
+}
+
+.ayat-actions button:hover,
+.ayat-actions button.playing {
+  color: var(--secondary);
+}
+
+.ayat-arabic {
+  font-size: 2.2rem;
+  text-align: right;
+  line-height: 2.5;
+  font-family: "Scheherazade New", "Amiri", "Traditional Arabic", serif;
+  color: var(--text-dark);
+  margin-bottom: 20px;
+  direction: rtl;
+}
+
+.ayat-latin {
+  font-size: 1.05rem;
+  color: #2d5a27;
+  margin-bottom: 15px;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+.ayat-translation {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+.audio-control-bar {
+  background: white;
+  padding: 15px 25px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  gap: 15px;
+}
+
+.audio-control-bar audio {
+  flex-grow: 1;
+  height: 40px;
+  max-width: 100%;
+}
+
+.audio-title {
+  font-weight: 600;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+@media (max-width: 768px) {
+  .surah-grid,
+  .juz-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ayat-arabic {
+    font-size: 1.8rem;
+    line-height: 2.2;
+  }
+
+  .audio-control-bar {
+    flex-direction: column;
+    border-radius: 15px;
+  }
+
+  .audio-control-bar audio {
+    width: 100%;
+  }
+}
