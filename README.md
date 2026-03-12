@@ -107,22 +107,65 @@ Website ini dikembangkan secara bertahap melalui beberapa misi, dimulai dari str
 Ramadan-challenge/
 │
 ├── Misi-1/ (Halaman Doa)
+│   ├── index.html
+│   └── css/
+│       └── style.css
+│
 ├── Misi-2/ (Hitung Zikir)
+│   ├── index.html
+│   ├── css/
+│   │   └── style.css
+│   └── js/
+│       └── script.js
+│
 ├── Misi-3/ (Kalkulator Zakat)
+│   ├── index.html
+│   ├── css/
+│   │   └── style.css
+│   └── js/
+│       └── script.js
+│
 ├── Misi-4/ (To-Do List)
+│   ├── index.html
+│   ├── css/
+│   │   └── style.css
+│   └── js/
+│       └── script.js
+│
 ├── Misi-5/ (Jadwal Imsakiyah)
 │   ├── index.html
 │   ├── css/
+│   │   └── style.css
 │   └── js/
+│       └── script.js
 │
 ├── Misi-6/ (Portal Ramadhan Terpadu)
-│   ├── index.html
-│   ├── doa-sahur-buka.html
-│   ├── quran.html
-│   ├── ...
+│   ├── index.html            (Landing Page)
+│   ├── imsakiyah.html        (Jadwal Imsakiyah)
+│   ├── quran.html            (Al-Qur'an Digital)
+│   ├── doa-sahur-buka.html   (Doa Ramadhan)
+│   ├── hitung-zikir.html     (Digital Tasbih)
+│   ├── kalkulator-zakat.html (Kalkulator Zakat)
+│   ├── todo-list.html       (Ramadhan To-Do)
 │   ├── css/
+│   │   ├── style.css         (Global Portal Styles)
+│   │   ├── navbar.css
+│   │   ├── imsakiyah.css
+│   │   ├── quran.css
+│   │   ├── doa-sahur-buka.css
+│   │   ├── hitung-zikir.css
+│   │   ├── kalkulator-zakat.css
+│   │   └── todo-list.css
 │   └── js/
-│       └── components/
+│       ├── script.js         (Global Portal Logic)
+│       ├── imsakiyah.js
+│       ├── quran.js
+│       ├── hitung-zikir.js
+│       ├── kalkulator-zakat.js
+│       ├── todo-list.js
+│       └── components/       (Web Components)
+│           ├── portal-navbar.js
+│           └── portal-footer.js
 │
 └── README.md
 ```
