@@ -70,7 +70,7 @@ Website ini dikembangkan secara bertahap melalui beberapa misi, dimulai dari str
 
 🔗 **Live Demo:** [Misi 4 - Ramadhan To-Do List](https://dzareldeveloper.github.io/Ramadan-challenge/Misi-4/)
 
-### Misi 6 — Portal Ramadhan Terpadu (Final Hub)
+### Misi 5 — Portal Ramadhan Terpadu (Final Hub)
 
 * **Integrasi Seluruh Misi**: Kesimpulan dari seluruh misi, menggabungkan Jadwal Imsakiyah, Doa Ramadhan, Hitung Dzikir, Kalkulator Zakat, Baca Al-Qur'an, dan Ramadhan To-Do List ke dalam satu portal terpadu.
 * **Web Components**: Implementasi *Custom Elements* (seperti `<portal-navbar>` dan `<portal-footer>`) untuk menciptakan komponen *reusable* layaknya framework modern, menggunakan JavaScript Vanilla murni.
@@ -78,7 +78,7 @@ Website ini dikembangkan secara bertahap melalui beberapa misi, dimulai dari str
 * **Navigasi Multi-Halaman Responsif**: Pengalaman transisi antar fitur yang mulus dengan *state* dan *styling* konsisten di seluruh halaman, memastikan keramahan pengguna baik di *desktop* maupun *mobile*.
 * **Siap Produksi (Production Ready)**: Kode HTML, CSS, dan JavaScript telah dioptimisasi, di-*refactor* menerapkan prinsip DRY (Don't Repeat Yourself), dan siap diluncurkan.
 
-🔗 **Live Demo Final:** [Misi 6 - Portal Ramadhan Terpadu](https://dzareldeveloper.github.io/Ramadan-challenge/Misi-6/)
+🔗 **Live Demo Final:** [Misi 5 - Portal Ramadhan Terpadu](https://dzareldeveloper.github.io/Ramadan-challenge/Misi-5/)
 
 ---
 
@@ -123,7 +123,7 @@ Ramadan-challenge/
 │   └── js/
 │       └── script.js
 │
-├── Misi-6/
+├── Misi-5/
 │   ├── index.html
 │   ├── doa-sahur-buka.html
 │   ├── hitung-zikir.html
