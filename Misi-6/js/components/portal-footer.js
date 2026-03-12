@@ -9,6 +9,10 @@ class PortalFooter extends HTMLElement {
         text: "Sebaik-baik manusia adalah yang paling bermanfaat bagi manusia lainnya.",
         source: "(HR. Ahmad)",
       },
+      "imsakiyah.html": {
+        text: "Puasa itu perisai, maka janganlah ia (orang yang puasa) berkata kotor dan berbuat jahil.",
+        source: "(HR. Bukhari & Muslim)",
+      },
       "quran.html": {
         text: "Bacalah Al-Qur'an, karena ia akan datang pada hari kiamat sebagai syafaat bagi pembacanya.",
         source: "(HR. Muslim)",

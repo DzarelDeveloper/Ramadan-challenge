@@ -19,6 +19,7 @@ class PortalNavbar extends HTMLElement {
                 </div>
                 <ul class="nav-links">
                     <li><a href="index.html" class="${currentPage === "index.html" ? "active" : ""}">Home</a></li>
+                    <li><a href="imsakiyah.html" class="${currentPage === "imsakiyah.html" ? "active" : ""}">Imsakiyah</a></li>
                     <li><a href="quran.html" class="${currentPage === "quran.html" ? "active" : ""}">Al-Qur'an</a></li>
                     <li><a href="doa-sahur-buka.html" class="${currentPage === "doa-sahur-buka.html" ? "active" : ""}">Doa</a></li>
                     <li><a href="hitung-zikir.html" class="${currentPage === "hitung-zikir.html" ? "active" : ""}">Hitung Zikir</a></li>
