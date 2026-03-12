@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Al-Qur'an Digital - Marhaban Ya Marhaban</title>
+
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/navbar.css" />
+    <link rel="stylesheet" href="css/quran.css" />
+  </head>
+
+  <body>
+    <portal-navbar></portal-navbar>
+
+    <section class="page-hero">
+      <h1>Al-Qur'an Digital</h1>
+      <p>
+        Baca, pahami, dan dengarkan lantunan ayat suci Al-Qur'an di mana saja
+      </p>
+    </section>
+
+    <main class="quran-container">
+      <section id="surah-list-view">
+        <div class="quran-tabs">
+          <button class="tab-btn active" onclick="app.switchTab('surah')">
+            Baca per Surah
+          </button>
+          <button class="tab-btn" onclick="app.switchTab('juz')">
+            Baca per Juz
+          </button>
+        </div>
+
+        <div class="search-container">
+          <i class="fas fa-search search-icon"></i>
+          <input
+            type="text"
+            id="search-surah"
+            placeholder="Cari nama surah... (Contoh: Al-Baqarah / Yasin)"
+          />
+        </div>
+
+        <div id="surah-grid" class="surah-grid">
+          <div class="loader">
+            <i class="fas fa-spinner fa-spin"></i> Memuat Daftar Surah...
+          </div>
+        </div>
+
+        <div id="juz-grid" class="juz-grid" style="display: none">
+          <div class="loader">
+            <i class="fas fa-spinner fa-spin"></i> Memuat Daftar Juz...
+          </div>
+        </div>
+      </section>
+
+      <section id="surah-detail-view" style="display: none">
+        <button class="btn-back" onclick="app.closeSurahDetail()">
+          <i class="fas fa-arrow-left"></i> Kembali ke Daftar Surah
+        </button>
+
+        <div id="surah-header-info" class="surah-header-info"></div>
+
+        <div
+          class="audio-control-bar"
+          id="surah-audio-player-container"
+          style="display: none"
+        ></div>
+
+        <div id="ayat-list" class="ayat-list">
+          <div class="loader">
+            <i class="fas fa-spinner fa-spin"></i> Memuat Ayat...
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <portal-footer></portal-footer>
+
+    <script src="js/quran.js"></script>
+    <script src="js/components/portal-navbar.js"></script>
+    <script src="js/components/portal-footer.js"></script>
+  </body>
+</html>
