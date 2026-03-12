@@ -6,14 +6,12 @@ const loadingState = document.getElementById('loading');
 const errorState = document.getElementById('error');
 const scheduleContent = document.getElementById('schedule-content');
 
-// Custom Select Elements
 const customSelectWrapper = document.getElementById('custom-select-wrapper');
 const selectTrigger = document.getElementById('select-trigger');
 const optionsList = document.getElementById('options-list');
 const citySearch = document.getElementById('city-search');
 const selectedCityText = document.getElementById('selected-city-text');
 
-// Bonus Feature Elements
 const btnViewCards = document.getElementById('btn-view-cards');
 const btnViewTable = document.getElementById('btn-view-table');
 const viewCardsContainer = document.getElementById('view-cards');
@@ -24,7 +22,6 @@ const dailyHijriDisplay = document.getElementById('daily-hijri-display');
 const countdownTimer = document.getElementById('countdown-timer');
 const countdownText = document.getElementById('next-prayer-name');
 
-// Fasting Progress Elements
 const fastingProgressContainer = document.getElementById('fasting-progress-container');
 const progressStartTime = document.getElementById('progress-start-time');
 const progressEndTime = document.getElementById('progress-end-time');
@@ -37,7 +34,6 @@ let currentScheduleData = null;
 let currentViewMode = 'cards';
 let countdownInterval = null;
 
-// Initialize
 document.addEventListener('DOMContentLoaded', () => {
     fetchCities();
     setupCustomSelect();
@@ -299,7 +295,7 @@ function startLiveCountdown(todaySchedule, prayers, nextPrayerIndex) {
         let targetDate = new Date();
         targetDate.setHours(targetH, targetM, 0, 0);
 
-        if (nextPrayerIndex === 0 && now.getHours() > 19) targetDate.setDate(targetDate.getDate() + 1);
+        if (targetDate < now) targetDate.setDate(targetDate.getDate() + 1);
 
         const diffMs = targetDate - now;
         if (diffMs <= 0) {
@@ -308,7 +304,6 @@ function startLiveCountdown(todaySchedule, prayers, nextPrayerIndex) {
             return;
         }
 
-        // Fasting Progress
         const imsakParts = prayers[0].time.split(':').map(Number);
         const maghribParts = prayers[4].time.split(':').map(Number);
         const startMs = new Date().setHours(imsakParts[0], imsakParts[1], 0, 0);

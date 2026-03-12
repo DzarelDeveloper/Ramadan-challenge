@@ -30,7 +30,6 @@ class PortalNavbar extends HTMLElement {
         </header>
         `;
 
-    // Attach hamburger logic directly within the component
     const hamburger = this.querySelector(".hamburger");
     const navLinks = this.querySelector(".nav-links");
 
