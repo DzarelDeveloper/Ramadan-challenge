@@ -1,0 +1,130 @@
+name: BinaAPK Builder
+
+on:
+  workflow_dispatch:
+    inputs:
+      app_name:
+        description: 'App Name'
+        required: true
+        default: 'Xen App'
+        type: string
+      app_id:
+        description: 'App ID (e.g., com.example.app)'
+        required: true
+        default: 'com.xen.app'
+        type: string
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout Target Repository
+        uses: actions/checkout@v4
+        with:
+          path: user_repo
+
+      - name: Checkout Base Builder Repository
+        uses: actions/checkout@v4
+        with:
+          repository: Xen-exl/BinaAPK
+          path: builder
+
+      - name: Prepare Web Assets
+        run: |
+          mkdir -p builder/web
+          rm -rf builder/web/*
+          
+          echo "Checking user_repo structure:"
+          ls -F user_repo/
+          
+          # Find the directory containing index.html in the user repo
+          WEB_SOURCE_DIR=""
+          for dir in "web_source" "out" "dist" "build" "public" "."; do
+            if [ -f "user_repo/$dir/index.html" ]; then
+              WEB_SOURCE_DIR="user_repo/$dir"
+              echo "Found index.html in $WEB_SOURCE_DIR"
+              break
+            fi
+          done
+          
+          if [ -z "$WEB_SOURCE_DIR" ]; then
+            echo "Error: Could not find index.html in user_repo root or common build directories (out, dist, build, public)."
+            echo "Current user_repo structure:"
+            find user_repo -maxdepth 2
+            exit 1
+          fi
+          
+          echo "Copying web assets from $WEB_SOURCE_DIR to builder/web/..."
+          rsync -av --exclude='.git' --exclude='.github' "$WEB_SOURCE_DIR/" builder/web/
+          
+          echo "Contents of builder/web/:"
+          ls -F builder/web/
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Update Capacitor Config
+        working-directory: ./builder
+        run: |
+          node -e "
+            const fs = require('fs');
+            const file = './capacitor.config.json';
+            const config = JSON.parse(fs.readFileSync(file, 'utf8'));
+            config.appName = '${{ github.event.inputs.app_name }}';
+            config.appId = '${{ github.event.inputs.app_id }}';
+            config.webDir = 'web';
+            fs.writeFileSync(file, JSON.stringify(config, null, 2));
+          "
+
+- name: Generate App Icons
+  working-directory: ./builder
+  run: |
+    if [ -f "../user_repo/android-icon.png" ]; then
+      cp ../user_repo/android-icon.png ./icon.png
+      npm install @capacitor/assets --no-save
+      npx capacitor-assets generate --android --assetPath .
+    fi
+
+      - name: Install Dependencies
+        working-directory: ./builder
+        run: npm install
+
+      - name: Generate Android Project
+        working-directory: ./builder
+        run: |
+          rm -rf android
+          npx cap add android
+
+      - name: Setup Java JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: '21'
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Build APK (Assemble Debug)
+        working-directory: ./builder/android
+        run: |
+          chmod +x gradlew
+          ./gradlew assembleDebug
+
+      - name: Publish Release to User Repository
+        working-directory: ./user_repo
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TIMESTAMP=$(date +%s)
+          TAG_NAME="build-$TIMESTAMP"
+          APP_FILENAME="${{ github.event.inputs.app_name }}"
+          
+          # Move APK
+          mv ../builder/android/app/build/outputs/apk/debug/app-debug.apk "./${APP_FILENAME}.apk"
+          
+          gh release create "$TAG_NAME" "./${APP_FILENAME}.apk" --title "BinaAPK Build ($TAG_NAME)" --notes "Dihasilkan secara automatik menggunakan sistem BinaAPK."
