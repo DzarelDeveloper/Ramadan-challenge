@@ -23,7 +23,7 @@ body {
 
 #home {
   text-align: center;
-  padding: 120px 20px;
+  padding: 110px 20px 110px;
   background:
     linear-gradient(rgba(45, 90, 39, 0.75), rgba(45, 90, 39, 0.9)),
     url("https://images.unsplash.com/photo-1564144004907-fb4a36be5b5c?auto=format&fit=crop&w=1920&q=80")
@@ -45,7 +45,7 @@ body {
 }
 
 #home h1 {
-  font-size: 3.5rem;
+  font-size: clamp(2.2rem, 10vw, 3.5rem);
   color: var(--secondary);
   margin-bottom: 20px;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
@@ -53,7 +53,7 @@ body {
 }
 
 #home p {
-  font-size: 1.3rem;
+  font-size: clamp(1rem, 4vw, 1.3rem);
   font-weight: 400;
   line-height: 1.8;
   color: #fdfdfd;
@@ -75,7 +75,7 @@ body {
   text-align: center;
   color: var(--primary);
   margin-bottom: 50px;
-  font-size: 2.2rem;
+  font-size: clamp(1.8rem, 6vw, 2.2rem);
   position: relative;
 }
 
@@ -91,8 +91,8 @@ body {
 
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(clamp(260px, 80%, 300px), 1fr));
+  gap: 20px;
 }
 
 .card {
@@ -166,7 +166,7 @@ footer {
   background-color: var(--primary);
   color: var(--text-light);
   text-align: center;
-  padding: 60px 20px 25px;
+  padding: 60px 20px calc(25px + env(safe-area-inset-bottom, 0));
   margin-top: 50px;
   position: relative;
 }
@@ -245,7 +245,7 @@ footer {
 
 @media (max-width: 768px) {
   #home {
-    padding: 100px 20px;
+    padding: 90px 20px 90px;
   }
 
   #home h1 {
