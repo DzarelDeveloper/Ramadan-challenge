@@ -14,8 +14,7 @@ header.portal-header {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   border-bottom: 4px solid var(--secondary);
   margin: 0;
-
-  padding: 0;
+  padding-top: env(safe-area-inset-top, 0);
   text-align: left;
 }
 
@@ -23,19 +22,20 @@ header.portal-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 5%;
+  padding: 0.5rem 5%;
   max-width: 1200px;
   margin: 0 auto;
 }
 
 .portal-nav .logo {
   color: var(--secondary);
-  font-size: 1.5rem;
+  font-size: clamp(1.2rem, 4vw, 1.5rem);
   font-weight: 700;
   text-decoration: none;
   display: flex;
   align-items: center;
   gap: 10px;
+  min-height: 44px;
 }
 
 .portal-nav .logo i {
@@ -87,8 +87,12 @@ header.portal-header {
   display: none;
   cursor: pointer;
   color: var(--text-light);
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   transition: color 0.3s ease;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
 }
 
 .portal-nav .hamburger:hover {
@@ -97,21 +101,24 @@ header.portal-header {
 
 @media (max-width: 768px) {
   .portal-nav .hamburger {
-    display: block;
+    display: flex;
   }
 
   .portal-nav .nav-links {
     position: fixed;
-    top: 70px;
+    top: 60px;
     left: -100%;
     width: 100%;
-    height: calc(100vh - 70px);
+    height: calc(100vh - 60px);
     background-color: var(--primary);
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start; /* Changed from center */
     align-items: center;
-    transition: left 0.4s ease-in-out;
+    transition: left 0.4s cubic-bezier(0.77, 0, 0.175, 1);
     z-index: 999;
+    padding: 2rem 0; /* Added vertical padding */
+    padding-bottom: calc(2rem + env(safe-area-inset-bottom, 20px));
+    overflow-y: auto; /* Added scrolling for many items */
   }
 
   .portal-nav .nav-links.active {
@@ -119,23 +126,23 @@ header.portal-header {
   }
 
   .portal-nav .nav-links li {
-    margin: 25px 0;
+    margin: 15px 0; /* Reduced from 25px to fit more items */
   }
 
   .portal-nav .nav-links li a {
-    font-size: 1.3rem;
+    font-size: 1.2rem; /* Slightly smaller for better fit */
   }
 }
 
 .page-hero {
   text-align: center;
-  padding: 120px 20px;
+  padding: 110px 20px 110px;
   background:
     linear-gradient(rgba(45, 90, 39, 0.75), rgba(45, 90, 39, 0.9)),
     url("https://images.unsplash.com/photo-1564144004907-fb4a36be5b5c?auto=format&fit=crop&w=1920&q=80")
       center/cover no-repeat;
   color: var(--text-light);
-  margin-bottom: 60px;
+  margin-bottom: 40px;
   position: relative;
 }
 
@@ -151,7 +158,7 @@ header.portal-header {
 }
 
 .page-hero h1 {
-  font-size: 3.5rem;
+  font-size: clamp(2rem, 8vw, 3.5rem);
   color: var(--secondary);
   margin-bottom: 20px;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
@@ -159,7 +166,7 @@ header.portal-header {
 }
 
 .page-hero p {
-  font-size: 1.3rem;
+  font-size: clamp(1rem, 4vw, 1.3rem);
   font-weight: 400;
   line-height: 1.8;
   color: #fdfdfd;
@@ -197,7 +204,7 @@ header.portal-header {
 
 @media (max-width: 768px) {
   .page-hero {
-    padding: 100px 20px;
+    padding: 90px 20px 90px;
   }
 
   .page-hero h1 {
