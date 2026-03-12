@@ -6,14 +6,12 @@ const loadingState = document.getElementById('loading');
 const errorState = document.getElementById('error');
 const scheduleContent = document.getElementById('schedule-content');
 
-// Custom Select Elements
 const customSelectWrapper = document.getElementById('custom-select-wrapper');
 const selectTrigger = document.getElementById('select-trigger');
 const optionsList = document.getElementById('options-list');
 const citySearch = document.getElementById('city-search');
 const selectedCityText = document.getElementById('selected-city-text');
 
-// Bonus Feature Elements
 const btnViewCards = document.getElementById('btn-view-cards');
 const btnViewTable = document.getElementById('btn-view-table');
 const viewCardsContainer = document.getElementById('view-cards');
@@ -25,7 +23,6 @@ const countdownContainer = document.querySelector('.countdown-container');
 const countdownText = document.getElementById('next-prayer-name');
 const countdownTimer = document.getElementById('countdown-timer');
 
-// Fasting Progress Elements
 const fastingProgressContainer = document.getElementById('fasting-progress-container');
 const progressStartTime = document.getElementById('progress-start-time');
 const progressEndTime = document.getElementById('progress-end-time');
@@ -35,10 +32,9 @@ const fastingProgressText = document.getElementById('fasting-progress-text');
 let cities = [];
 let selectedCityId = null;
 let currentScheduleData = null;
-let currentViewMode = 'cards'; // 'cards' or 'table'
+let currentViewMode = 'cards';
 let countdownInterval = null;
 
-// Initialize
 document.addEventListener('DOMContentLoaded', () => {
     fetchCities();
     setupCustomSelect();
@@ -76,7 +72,6 @@ function setupViewToggles() {
 }
 
 function setupCustomSelect() {
-    // Toggle dropdown
     selectTrigger.addEventListener('click', () => {
         if (!citySelect.disabled) {
             customSelectWrapper.classList.toggle('open');
@@ -86,14 +81,12 @@ function setupCustomSelect() {
         }
     });
 
-    // Close when clicking outside
     document.addEventListener('click', (e) => {
         if (!customSelectWrapper.contains(e.target)) {
             customSelectWrapper.classList.remove('open');
         }
     });
 
-    // Search functionality
     citySearch.addEventListener('input', (e) => {
         filterOptions(e.target.value);
     });
@@ -116,7 +109,6 @@ function filterOptions(searchTerm) {
         }
     });
 
-    // Handle no results
     let noResultMsg = optionsList.querySelector('.no-result');
     if (!hasResults) {
         if (!noResultMsg) {
@@ -141,7 +133,6 @@ async function fetchCities() {
             cities = result.data;
             populateCityDropdown();
 
-            // Check localStorage for saved city, otherwise default to Jakarta (ID: 1301)
             const savedCityId = localStorage.getItem('ramadhan_selected_city');
             const defaultCityId = savedCityId && cities.find(c => c.id === savedCityId) ? savedCityId : '1301';
 
@@ -158,19 +149,16 @@ async function fetchCities() {
 
 function populateCityDropdown() {
     optionsList.innerHTML = '';
-    citySelect.innerHTML = ''; // Keep native select in sync
+    citySelect.innerHTML = '';
 
-    // Sort cities alphabetically
     cities.sort((a, b) => a.lokasi.localeCompare(b.lokasi));
 
     cities.forEach(city => {
-        // Native option
         const option = document.createElement('option');
         option.value = city.id;
         option.textContent = city.lokasi;
         citySelect.appendChild(option);
 
-        // Custom option
         const li = document.createElement('li');
         li.dataset.value = city.id;
         li.textContent = city.lokasi;
@@ -178,8 +166,8 @@ function populateCityDropdown() {
         li.addEventListener('click', () => {
             selectCity(city.id);
             customSelectWrapper.classList.remove('open');
-            citySearch.value = ''; // Clear search on select
-            filterOptions(''); // Reset filter
+            citySearch.value = '';
+            filterOptions('');
         });
 
         optionsList.appendChild(li);
@@ -192,12 +180,10 @@ function selectCity(cityId) {
 
     if (city) {
         selectedCityText.textContent = city.lokasi;
-        citySelect.value = cityId; // Keep native select in sync
+        citySelect.value = cityId;
 
-        // Save to Local Storage
         localStorage.setItem('ramadhan_selected_city', cityId);
 
-        // Update selected class
         const options = optionsList.querySelectorAll('li');
         options.forEach(opt => {
             if (opt.dataset.value === cityId) opt.classList.add('selected');
@@ -235,7 +221,6 @@ function renderSchedule(data) {
     currentScheduleData = data;
     locationName.textContent = data.lokasi;
 
-    // Setup Table View
     const now = new Date();
     const year = now.getFullYear();
     const month = String(now.getMonth() + 1).padStart(2, '0');
@@ -269,7 +254,6 @@ function renderSchedule(data) {
     ];
     currentMonthEl.textContent = `${monthNames[now.getMonth()]} ${now.getFullYear()}`;
 
-    // Render active view
     if (currentViewMode === 'cards') {
         renderDailyCards(data);
     }
@@ -282,21 +266,15 @@ function renderDailyCards(data) {
     const day = String(now.getDate()).padStart(2, '0');
     const todayStr = `${year}-${month}-${day}`;
 
-    // Find today's schedule or fallback to first day
     let todaySchedule = data.jadwal.find(item => item.date === todayStr);
 
     if (!todaySchedule) {
-        // If today is not in the schedule (e.g. wrong month loaded), just show the first day
         todaySchedule = data.jadwal[0];
     }
 
     dailyDateDisplay.textContent = todaySchedule.tanggal;
-
-    // In a real app we would use a Hijri converter API here. 
-    // For this challenge, we use a static string based on the design requirement
     dailyHijriDisplay.textContent = 'Ramadhan 1447 H';
 
-    // Determine next prayer for highlight
     const currentTime = now.getHours() * 60 + now.getMinutes();
     const prayers = [
         { name: 'Imsak', time: todaySchedule.imsak },
@@ -316,7 +294,6 @@ function renderDailyCards(data) {
             break;
         }
     }
-    // If all prayers passed, next is Imsak tomorrow
     if (nextPrayerIndex === -1) nextPrayerIndex = 0;
 
     dailyGrid.innerHTML = '';
@@ -335,15 +312,12 @@ function renderDailyCards(data) {
         dailyGrid.appendChild(card);
     });
 
-    // Start Live Countdown
     startLiveCountdown(todaySchedule, prayers, nextPrayerIndex);
 }
 
 function startLiveCountdown(todaySchedule, prayers, nextPrayerIndex) {
     if (countdownInterval) clearInterval(countdownInterval);
 
-    // If next prayer is tomorrow's Imsak (index 0 but tomorrow), we simplify it 
-    // by just asking user to wait for tomorrow. For a full implementation we'd grab tomorrow's schedule.
     let targetTimeStr = prayers[nextPrayerIndex].time;
     countdownText.textContent = prayers[nextPrayerIndex].name;
 
@@ -358,7 +332,6 @@ function startLiveCountdown(todaySchedule, prayers, nextPrayerIndex) {
         let targetDate = new Date();
         targetDate.setHours(targetH, targetM, 0, 0);
 
-        // If next prayer is Imsak and we are past Isya, target is tomorrow
         if (nextPrayerIndex === 0 && (currentH > 19 || (currentH === 19 && currentM > 30))) {
             targetDate.setDate(targetDate.getDate() + 1);
         }
@@ -366,7 +339,6 @@ function startLiveCountdown(todaySchedule, prayers, nextPrayerIndex) {
         const diffMs = targetDate - now;
 
         if (diffMs <= 0) {
-            // Time is up! Refresh the cards to get the next prayer
             clearInterval(countdownInterval);
             countdownTimer.textContent = "00 : 00 : 00";
             countdownContainer.classList.remove('urgent');
@@ -376,14 +348,12 @@ function startLiveCountdown(todaySchedule, prayers, nextPrayerIndex) {
             return;
         }
 
-        // Add urgent pulse class if less than 5 minutes remain (300,000 ms)
         if (diffMs <= 300000) {
             countdownContainer.classList.add('urgent');
         } else {
             countdownContainer.classList.remove('urgent');
         }
 
-        // Fasting Progress Logic
         const isFastingPeriod = currentH > Math.floor(prayers[0].time.split(':')[0]) ||
             (currentH === Math.floor(prayers[0].time.split(':')[0]) && currentM >= Math.floor(prayers[0].time.split(':')[1]));
         const isBeforeMaghrib = currentH < Math.floor(prayers[4].time.split(':')[0]) ||
@@ -421,7 +391,7 @@ function startLiveCountdown(todaySchedule, prayers, nextPrayerIndex) {
         countdownTimer.textContent = `${String(h).padStart(2, '0')} : ${String(m).padStart(2, '0')} : ${String(s).padStart(2, '0')}`;
     };
 
-    updateTimer(); // Initial call
+    updateTimer();
     countdownInterval = setInterval(updateTimer, 1000);
 }
 

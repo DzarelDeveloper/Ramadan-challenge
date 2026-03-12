@@ -37,7 +37,6 @@ h4 {
     font-family: 'Outfit', sans-serif;
 }
 
-/* Header */
 header {
     background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
     color: #f4f1de;
@@ -81,13 +80,11 @@ header p {
     font-weight: 400;
 }
 
-/* Main Content */
 main {
     flex: 1;
     display: flex;
     justify-content: center;
     padding: -3rem 1.5rem 3rem;
-    /* Negative top margin to overlap header */
     margin-top: -3rem;
     position: relative;
     z-index: 10;
@@ -101,7 +98,6 @@ main {
     gap: 2rem;
 }
 
-/* Cards */
 .selection-card,
 .schedule-card {
     background-color: var(--card-bg);
@@ -135,14 +131,12 @@ main {
     font-weight: 700;
 }
 
-/* Location Input Group */
 .location-input-group {
     display: flex;
     gap: 0.75rem;
     align-items: flex-start;
 }
 
-/* Custom Select Dropdown */
 .dzikir-selector label {
     display: block;
     margin-bottom: 0.75rem;
@@ -277,7 +271,6 @@ main {
     }
 }
 
-/* Schedule Header */
 .schedule-header-flex {
     display: flex;
     justify-content: space-between;
@@ -306,7 +299,6 @@ main {
     box-shadow: 0 2px 8px rgba(64, 145, 108, 0.3);
 }
 
-/* Header Controls & Toggles */
 .header-controls {
     display: flex;
     align-items: center;
@@ -339,7 +331,6 @@ main {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
-/* Daily Cards View */
 .daily-cards-container {
     animation: fadeIn 0.4s ease forwards;
 }
@@ -388,7 +379,6 @@ main {
     font-size: 1.1rem;
 }
 
-/* Real-time Countdown */
 .mt-3 {
     margin-top: 1rem;
 }
@@ -430,7 +420,6 @@ main {
     transition: color 0.3s ease;
 }
 
-/* Urgent Pulse State */
 .countdown-container.urgent {
     border-color: #e63946;
     box-shadow: 0 0 15px rgba(230, 57, 70, 0.3);
@@ -455,7 +444,6 @@ main {
     }
 }
 
-/* Fasting Progress Bar */
 .fasting-progress-wrapper {
     margin-top: 1.5rem;
     padding-top: 1rem;
@@ -496,27 +484,22 @@ main {
     margin-top: 0.5rem;
 }
 
-/* Prayer Cards Enhancement */
 .prayer-times-grid {
     display: grid;
-    /* Force 6 columns on larger screens so they stay in one row */
     grid-template-columns: repeat(6, 1fr);
     gap: 1rem;
     padding-bottom: 1rem;
-    /* Add some space at the bottom */
 }
 
 @media (max-width: 900px) {
     .prayer-times-grid {
         grid-template-columns: repeat(3, 1fr);
-        /* 3 columns on tablet */
     }
 }
 
 @media (max-width: 600px) {
     .prayer-times-grid {
         grid-template-columns: repeat(2, 1fr);
-        /* 2 columns on mobile */
     }
 }
 
@@ -573,14 +556,12 @@ main {
     color: white;
 }
 
-/* Table */
 .table-responsive {
     overflow-x: auto;
     border-radius: 12px;
     border: 1px solid var(--border-color);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
     max-height: 500px;
-    /* Enable vertical scrolling */
     overflow-y: auto;
 }
 
@@ -604,7 +585,6 @@ th {
     z-index: 10;
 }
 
-/* Add a shadow under sticky header when scrolled */
 th::after {
     content: '';
     position: absolute;
@@ -645,7 +625,6 @@ tbody tr {
     opacity: 0;
 }
 
-/* Stagger row animations */
 tbody tr:nth-child(1) {
     animation-delay: 0.05s;
 }
@@ -666,7 +645,6 @@ tbody tr:nth-child(5) {
     animation-delay: 0.25s;
 }
 
-/* Applied to all rows generally after 5 items */
 tbody tr:nth-child(n+6) {
     animation-delay: 0.3s;
 }
@@ -679,7 +657,6 @@ tbody tr:last-child td {
     border-bottom: none;
 }
 
-/* Today Highlight */
 tr.today {
     background-color: var(--today-bg);
 }
@@ -707,7 +684,6 @@ tr.today td:first-child::before {
     font-size: 0;
 }
 
-/* Status Messages */
 .status-message {
     text-align: center;
     padding: 4rem 2rem;
@@ -782,7 +758,6 @@ tr.today td:first-child::before {
     display: none !important;
 }
 
-/* Footer */
 footer {
     background-color: var(--primary-dark);
     color: #f4f1de;
@@ -793,7 +768,6 @@ footer {
     border-top: 4px solid var(--accent);
 }
 
-/* Responsive */
 @media (max-width: 768px) {
     header {
         padding: 3rem 1rem 4rem;

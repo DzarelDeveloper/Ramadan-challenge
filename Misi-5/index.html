@@ -42,13 +42,9 @@
                                     <input type="text" id="city-search" placeholder="Cari kota/kabupaten..."
                                         autocomplete="off">
                                 </div>
-                                <ul class="options-list" id="options-list">
-                                    <!-- Options will be injected here -->
-                                </ul>
+                                <ul class="options-list" id="options-list"></ul>
                             </div>
-                            <select id="city-select" style="display: none;">
-                                <!-- Hidden native select for fallback/data binding if needed -->
-                            </select>
+                            <select id="city-select" style="display: none;"></select>
                         </div>
                     </div>
                 </div>
@@ -80,7 +76,6 @@
                 </div>
 
                 <div id="schedule-content" class="hidden">
-                    <!-- Daily Cards View -->
                     <div id="view-cards" class="daily-cards-container">
                         <div class="date-header-card d-flex-between">
                             <div class="date-info-left">
@@ -88,13 +83,11 @@
                                 <p id="daily-hijri-display" class="hijri-date">Ramadhan 1447 H</p>
                             </div>
 
-                            <!-- Realtime Countdown -->
                             <div class="countdown-container mt-3">
                                 <div id="countdown-text" class="countdown-text">Waktu <span id="next-prayer-name"
                                         class="fw-bold">...</span> dalam:</div>
                                 <div id="countdown-timer" class="countdown-timer mt-1">-- : -- : --</div>
 
-                                <!-- Fasting Progress Bar -->
                                 <div id="fasting-progress-container" class="fasting-progress-wrapper hidden mt-3">
                                     <div class="progress-labels">
                                         <span class="label-start">Imsak (<span id="progress-start-time"></span>)</span>
@@ -107,12 +100,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="prayer-times-grid" id="daily-grid">
-                            <!-- Daily cards injected here -->
-                        </div>
+                        <div class="prayer-times-grid" id="daily-grid"></div>
                     </div>
 
-                    <!-- Monthly Table View -->
                     <div id="view-table" class="table-responsive hidden">
                         <table id="imsakiyah-table">
                             <thead>
@@ -126,9 +116,7 @@
                                     <th>Isya</th>
                                 </tr>
                             </thead>
-                            <tbody id="schedule-body">
-                                <!-- Data will be injected here -->
-                            </tbody>
+                            <tbody id="schedule-body"></tbody>
                         </table>
                     </div>
                 </div>
