@@ -12,7 +12,7 @@ class PortalNavbar extends HTMLElement {
         <header class="portal-header">
             <nav class="portal-nav">
                 <a href="index.html" class="logo">
-                    <i class="fas fa-moon"></i> Marhaban Ya Marhaban
+                    <i class="fas fa-moon"></i> Ramadhan App
                 </a>
                 <div class="hamburger">
                     <i class="fas fa-bars"></i>
