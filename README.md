@@ -70,15 +70,24 @@ Website ini dikembangkan secara bertahap melalui beberapa misi, dimulai dari str
 
 🔗 **Live Demo:** [Misi 4 - Ramadhan To-Do List](https://dzareldeveloper.github.io/Ramadan-challenge/Misi-4/)
 
-### Misi 5 — Portal Ramadhan Terpadu (Final Hub)
+### Misi 5 — Jadwal Imsakiyah Interaktif
 
-* **Integrasi Seluruh Misi**: Kesimpulan dari seluruh misi, menggabungkan Jadwal Imsakiyah, Doa Ramadhan, Hitung Dzikir, Kalkulator Zakat, Baca Al-Qur'an, dan Ramadhan To-Do List ke dalam satu portal terpadu.
-* **Web Components**: Implementasi *Custom Elements* (seperti `<portal-navbar>` dan `<portal-footer>`) untuk menciptakan komponen *reusable* layaknya framework modern, menggunakan JavaScript Vanilla murni.
-* **Dashboard Jadwal Imsakiyah**: Mengambil data jadwal shalat secara *real-time* via API, dilengkapi *live countdown*, progres puasa, serta fitur pencarian pintar untuk menyesuaikan lokasi pengguna.
-* **Navigasi Multi-Halaman Responsif**: Pengalaman transisi antar fitur yang mulus dengan *state* dan *styling* konsisten di seluruh halaman, memastikan keramahan pengguna baik di *desktop* maupun *mobile*.
-* **Siap Produksi (Production Ready)**: Kode HTML, CSS, dan JavaScript telah dioptimisasi, di-*refactor* menerapkan prinsip DRY (Don't Repeat Yourself), dan siap diluncurkan.
+* **Pencarian Lokasi Otomatis**: Fitur pencarian kota/kabupaten di seluruh Indonesia menggunakan API eksternal.
+* **Dashboard Jadwal Shalat**: Menampilkan waktu Imsak, Subuh, Dzuhur, Ashar, Maghrib, dan Isya.
+* **Live Countdown**: Penghitung waktu mundur real-time menuju waktu shalat berikutnya.
+* **Progress Bar Puasa**: Indikator visual progres ibadah puasa harian dari Imsak hingga Maghrib.
+* **Dual View Mode**: Pilihan tampilan harian (Card view) yang fokus atau tampilan bulanan (Table view) yang komprehensif.
 
-🔗 **Live Demo Final:** [Misi 5 - Portal Ramadhan Terpadu](https://dzareldeveloper.github.io/Ramadan-challenge/Misi-5/)
+🔗 **Live Demo:** [Misi 5 - Jadwal Imsakiyah Interaktif](https://dzareldeveloper.github.io/Ramadan-challenge/Misi-5/)
+
+### Misi 6 — Portal Ramadhan Terpadu (Final Hub)
+
+* **Integrasi Seluruh Misi**: Menggabungkan seluruh fitur yang telah dibuat (Jadwal Imsakiyah, Doa, Hitung Dzikir, Kalkulator Zakat, Al-Qur'an, dan To-Do List) ke dalam satu portal terpadu.
+* **Web Components**: Implementasi *Custom Elements* (`<portal-navbar>` dan `<portal-footer>`) untuk komponen yang *reusable* dan modular.
+* **Landing Page Premium**: Navigasi pusat dengan desain modern, responsif, dan konsisten di seluruh fitur.
+* **Produksi Siap Pakai**: Kode yang telah di-*refactor* menerapkan prinsip DRY dan performa yang dioptimalkan untuk pengalaman pengguna terbaik.
+
+🔗 **Live Demo Final:** [Misi 6 - Portal Ramadhan Terpadu](https://dzareldeveloper.github.io/Ramadan-challenge/Misi-6/)
 
 ---
 
@@ -86,8 +95,8 @@ Website ini dikembangkan secara bertahap melalui beberapa misi, dimulai dari str
 
 * HTML5
 * CSS3
-* JavaScript
-* GitHub
+* JavaScript (ES6+ & Web Components)
+* Git & GitHub
 * Visual Studio Code
 
 ---
@@ -97,44 +106,23 @@ Website ini dikembangkan secara bertahap melalui beberapa misi, dimulai dari str
 ```text
 Ramadan-challenge/
 │
-├── Misi-1/
-│   ├── index.html
-│   └── css/
-│       └── style.css
-│
-├── Misi-2/
-│   ├── index.html
-│   ├── css/
-│   │   └── style.css
-│   └── js/
-│       └── script.js
-│
-├── Misi-3/
+├── Misi-1/ (Halaman Doa)
+├── Misi-2/ (Hitung Zikir)
+├── Misi-3/ (Kalkulator Zakat)
+├── Misi-4/ (To-Do List)
+├── Misi-5/ (Jadwal Imsakiyah)
 │   ├── index.html
 │   ├── css/
-│   │   └── style.css
 │   └── js/
-│       └── script.js
 │
-├── Misi-4/
-│   ├── index.html
-│   ├── css/
-│   │   └── style.css
-│   └── js/
-│       └── script.js
-│
-├── Misi-5/
+├── Misi-6/ (Portal Ramadhan Terpadu)
 │   ├── index.html
 │   ├── doa-sahur-buka.html
-│   ├── hitung-zikir.html
-│   ├── kalkulator-zakat.html
 │   ├── quran.html
-│   ├── todo-list.html
+│   ├── ...
 │   ├── css/
-│   │   ├── (Kumpulan file CSS modular)
 │   └── js/
-│       ├── components/ (Web Components)
-│       └── (Kumpulan file JS modular)
+│       └── components/
 │
 └── README.md
 ```
